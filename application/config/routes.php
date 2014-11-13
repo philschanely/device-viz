@@ -40,7 +40,6 @@
 
 $route['default_controller'] = "main";
 $route['temp'] = "main/temp";
-$route['(:any)'] = "main/index/$1";
 $route['404_override'] = '';
 
 

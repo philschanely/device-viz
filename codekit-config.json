@@ -322,12 +322,12 @@
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
-    "\/application\/config\/doctypes.php" : {
+    "\/application\/views\/html_head.php" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/application\/config\/doctypes.php",
+      "inputAbbreviatedPath" : "\/application\/views\/html_head.php",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
@@ -383,22 +383,14 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/assets\/less\/mixins\/nav-vertical-align.less" : {
-      "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/assets\/less\/mixins\/nav-vertical-align.less",
-      "outputAbbreviatedPath" : "\/assets\/less\/css\/nav-vertical-align.css",
-      "outputPathIsSetByUser" : 0,
-      "strictUnits" : 0,
-      "relativeURLS" : 0,
-      "ignore" : 1,
-      "strictImports" : 0,
+    "\/application\/config\/doctypes.php" : {
       "ignoreWasSetByUser" : 0,
-      "shouldRunBless" : 0,
+      "ignore" : 0,
       "hidden" : 0,
-      "strictMath" : 0,
-      "outputStyle" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/application\/config\/doctypes.php",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/application\/libraries\/MY_Parser.php" : {
       "ignoreWasSetByUser" : 0,
@@ -413,6 +405,23 @@
       "ieCompatibility" : 1,
       "inputAbbreviatedPath" : "\/assets\/less\/mixins\/labels.less",
       "outputAbbreviatedPath" : "\/assets\/less\/css\/labels.css",
+      "outputPathIsSetByUser" : 0,
+      "strictUnits" : 0,
+      "relativeURLS" : 0,
+      "ignore" : 1,
+      "strictImports" : 0,
+      "ignoreWasSetByUser" : 0,
+      "shouldRunBless" : 0,
+      "hidden" : 0,
+      "strictMath" : 0,
+      "outputStyle" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
+    },
+    "\/assets\/less\/mixins\/nav-vertical-align.less" : {
+      "ieCompatibility" : 1,
+      "inputAbbreviatedPath" : "\/assets\/less\/mixins\/nav-vertical-align.less",
+      "outputAbbreviatedPath" : "\/assets\/less\/css\/nav-vertical-align.css",
       "outputPathIsSetByUser" : 0,
       "strictUnits" : 0,
       "relativeURLS" : 0,
@@ -466,15 +475,6 @@
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/application\/config\/database.php",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
-    },
-    "\/application\/config\/user_agents.php" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/application\/config\/user_agents.php",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
@@ -606,12 +606,12 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/application\/views\/html_head.php" : {
+    "\/application\/config\/user_agents.php" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/application\/views\/html_head.php",
+      "inputAbbreviatedPath" : "\/application\/config\/user_agents.php",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     },
@@ -764,14 +764,22 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/application\/language\/english\/index.html" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
+    "\/assets\/less\/mixins\/opacity.less" : {
+      "ieCompatibility" : 1,
+      "inputAbbreviatedPath" : "\/assets\/less\/mixins\/opacity.less",
+      "outputAbbreviatedPath" : "\/assets\/less\/css\/opacity.css",
       "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/application\/language\/english\/index.html",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
+      "strictUnits" : 0,
+      "relativeURLS" : 0,
+      "ignore" : 1,
+      "strictImports" : 0,
+      "ignoreWasSetByUser" : 0,
+      "shouldRunBless" : 0,
+      "hidden" : 0,
+      "strictMath" : 0,
+      "outputStyle" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/assets\/less\/mixins\/background-variant.less" : {
       "ieCompatibility" : 1,
@@ -790,6 +798,15 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
+    "\/application\/language\/english\/index.html" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/application\/language\/english\/index.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
     "\/application\/logs\/index.html" : {
       "ignoreWasSetByUser" : 0,
       "ignore" : 0,
@@ -798,23 +815,6 @@
       "inputAbbreviatedPath" : "\/application\/logs\/index.html",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
-    },
-    "\/assets\/less\/mixins\/opacity.less" : {
-      "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/assets\/less\/mixins\/opacity.less",
-      "outputAbbreviatedPath" : "\/assets\/less\/css\/opacity.css",
-      "outputPathIsSetByUser" : 0,
-      "strictUnits" : 0,
-      "relativeURLS" : 0,
-      "ignore" : 1,
-      "strictImports" : 0,
-      "ignoreWasSetByUser" : 0,
-      "shouldRunBless" : 0,
-      "hidden" : 0,
-      "strictMath" : 0,
-      "outputStyle" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
     },
     "\/assets\/less\/buttons.less" : {
       "ieCompatibility" : 1,
@@ -1292,22 +1292,14 @@
       "fileType" : 1,
       "debugStyle" : 0
     },
-    "\/assets\/less\/mixins\/tab-focus.less" : {
-      "ieCompatibility" : 1,
-      "inputAbbreviatedPath" : "\/assets\/less\/mixins\/tab-focus.less",
-      "outputAbbreviatedPath" : "\/assets\/less\/css\/tab-focus.css",
-      "outputPathIsSetByUser" : 0,
-      "strictUnits" : 0,
-      "relativeURLS" : 0,
-      "ignore" : 1,
-      "strictImports" : 0,
+    "\/application\/libraries\/MY_DSO.php" : {
       "ignoreWasSetByUser" : 0,
-      "shouldRunBless" : 0,
+      "ignore" : 0,
       "hidden" : 0,
-      "strictMath" : 0,
-      "outputStyle" : 0,
-      "fileType" : 1,
-      "debugStyle" : 0
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/application\/libraries\/MY_DSO.php",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
     },
     "\/assets\/css\/bootstrap-theme.min.css" : {
       "ignoreWasSetByUser" : 0,
@@ -1317,15 +1309,6 @@
       "inputAbbreviatedPath" : "\/assets\/css\/bootstrap-theme.min.css",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 16
-    },
-    "\/application\/libraries\/MY_DSO.php" : {
-      "ignoreWasSetByUser" : 0,
-      "ignore" : 0,
-      "hidden" : 0,
-      "outputPathIsSetByUser" : 0,
-      "inputAbbreviatedPath" : "\/application\/libraries\/MY_DSO.php",
-      "outputAbbreviatedPath" : "No Output Path",
-      "fileType" : 2048
     },
     "\/assets\/less\/panels.less" : {
       "ieCompatibility" : 1,
@@ -1352,6 +1335,23 @@
       "inputAbbreviatedPath" : "\/application\/libraries\/index.html",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
+    },
+    "\/assets\/less\/mixins\/tab-focus.less" : {
+      "ieCompatibility" : 1,
+      "inputAbbreviatedPath" : "\/assets\/less\/mixins\/tab-focus.less",
+      "outputAbbreviatedPath" : "\/assets\/less\/css\/tab-focus.css",
+      "outputPathIsSetByUser" : 0,
+      "strictUnits" : 0,
+      "relativeURLS" : 0,
+      "ignore" : 1,
+      "strictImports" : 0,
+      "ignoreWasSetByUser" : 0,
+      "shouldRunBless" : 0,
+      "hidden" : 0,
+      "strictMath" : 0,
+      "outputStyle" : 0,
+      "fileType" : 1,
+      "debugStyle" : 0
     },
     "\/application\/config\/config.php" : {
       "ignoreWasSetByUser" : 0,
@@ -1699,6 +1699,15 @@
       "hidden" : 0,
       "outputPathIsSetByUser" : 0,
       "inputAbbreviatedPath" : "\/application\/hooks\/index.html",
+      "outputAbbreviatedPath" : "No Output Path",
+      "fileType" : 2048
+    },
+    "\/application\/controllers\/user.php" : {
+      "ignoreWasSetByUser" : 0,
+      "ignore" : 0,
+      "hidden" : 0,
+      "outputPathIsSetByUser" : 0,
+      "inputAbbreviatedPath" : "\/application\/controllers\/user.php",
       "outputAbbreviatedPath" : "No Output Path",
       "fileType" : 2048
     }
