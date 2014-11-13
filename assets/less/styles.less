@@ -1,0 +1,187 @@
+@import "bootstrap.less";
+@import "variables.less";
+@import "mixins.less";
+
+//== Colors
+@grey: rgb(47,53,58);
+@off-white: rgb(242,242,242);
+@green: rgb(12,156,93);
+@hi-green: lighten(@green,10%);
+@blue: rgb(3,135,220);
+@dark-blue: rgb(5,56,89);
+
+//== Fonts
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic|Roboto+Condensed:300italic,400italic,700italic,400,300,700);
+
+//== Redefine bootstrap variables
+
+@brand-primary: @blue;
+@brand-success: @hi-green;
+@brand-info:    rgb(0,178,178);
+@brand-warning: rgb(255,147,0);
+@brand-danger:  rgb(220,0,0);
+
+@body-bg:    #fff;
+@text-color: @gray;
+@gray-base: @grey;
+@gray-darker:  lighten(@gray-base, 13.5%); 
+@gray-dark:    lighten(@gray-base, 20%);   
+@gray:         lighten(@gray-base, 33.5%); 
+@gray-light:   lighten(@gray-base, 46.7%); 
+@gray-lighter: lighten(@gray-base, 93.5%); 
+
+@font-family-sans-serif:  "Roboto", Helvetica, Arial, sans-serif;
+@font-family-base:        @font-family-sans-serif;
+
+@font-size-base:          14px;
+@font-size-large:         19px;
+@font-size-small:         11px;
+
+@font-size-h1:            59px;
+@font-size-h2:            37px;
+@font-size-h3:            23px;
+@font-size-h4:            19px;
+@font-size-h5:            @font-size-base;
+@font-size-h6:            @font-size-base;
+
+@line-height-base:        1.618;
+@line-height-computed:    floor((@font-size-base * @line-height-base));
+
+@headings-font-family:    "Roboto Condensed";
+@headings-font-weight:    300;
+@headings-line-height:    1.618;
+@headings-color:          inherit;
+
+
+//== Mixins
+
+.btn-ghost {
+    border-color:@off-white;
+    background-color: transparent;
+    color:@off-white;
+    &:hover {
+        border-color:@off-white;
+    }
+}
+
+
+//== Style overrides
+
+a { color:@green; }
+a:hover { color:@hi-green; }
+
+html { background-color: @off-white; }
+
+body {
+    background-color: @off-white;
+    color:@grey;
+    font-weight:300;
+}
+
+#benefits {
+    min-height: 100vh;
+    background-color:@dark-blue;
+    .inner {
+        .container;
+        padding-top:59px;
+        padding-bottom:37px;
+        h2 { 
+            margin-top:0;
+            font-size:@font-size-h1;
+            font-weight:300;
+            text-align: center;
+            color:@off-white; 
+        }
+        ul { 
+            .list-unstyled; 
+            .make-row();
+            margin-top:23px;
+        }
+        li { 
+            .make-md-column(4); 
+            font-size:24px;
+            color:@off-white;
+            img { 
+                margin-bottom:23px; 
+                .center-block; 
+                .img-responsive;
+            }
+            &:nth-child(1) img {}
+            &:nth-child(2) img { padding-top:54px; }
+            &:nth-child(3) img { padding-top:35px; }
+        }
+    }
+}
+
+#btn-login {
+    .btn; .btn-default; .btn-ghost;
+    .navbar-btn;
+    .pull-right;
+}
+
+footer {
+    background: @gray-base;
+    color:@off-white;
+    p {
+        .container;
+        padding:53px 15px;
+        margin-bottom:0;
+        text-align:center;
+    }
+}
+
+#intro {
+    .jumbotron;
+    min-height: 100vh;
+    margin-bottom:0;
+    background-color: @green;
+    .inner {
+        .container;
+    }
+    h1 { 
+        color:@off-white; 
+        width:80%;
+        text-align: center;
+        .center-block; 
+    }
+    img {
+        .center-block;
+        .img-responsive;
+        margin-top:60px;
+    }
+}
+
+#masthead {
+    .navbar-header; 
+    h1 { 
+        margin-top:0; 
+        margin-bottom:0; 
+        .navbar-brand; 
+        a { color:@off-white; }
+        small { color:@off-white; font-size:@font-size-base; }
+    }
+}
+
+#nav-main {
+    .navbar;
+    .navbar-inverse; 
+    border-radius: 0!important;
+    margin-bottom: 0;
+}
+
+#nav-main-content {
+    .container;
+}
+
+#btn-signup a {
+    .btn;
+    .btn-default;
+    .btn-ghost;
+    .btn-lg;
+    .center-block;
+    width:230px;
+    font-size:37px;
+    font-weight: 300;
+    margin-top:60px;
+    &:hover { color:@green; }
+}
