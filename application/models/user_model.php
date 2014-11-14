@@ -54,10 +54,24 @@ class User_model extends CI_Model {
         }
     }
     
+    public function delete($user_id)
+    {
+        switch ($user_id)
+        {
+            case 'all':
+                $this->db->where('user_id > 1');
+                break;
+            default:
+                $this->db->where('user_id', $user_id);
+                break;
+        }
+        $this->db->delete('User');
+    }
+    
     public function get($user_id)
     {
         $this->db->where('user_id', $user_id);
-        $user = checkForResults($this->db->get('user_details'), 'row');
+        $user = checkForResults($this->db->get('User_Details'), 'row');
         return $user;
     }
     
@@ -81,18 +95,37 @@ class User_model extends CI_Model {
                 $user = $this->get($valid_user->user_id);
                 $this->session->set_userdata('user', $user);
                 $this->check_for_auth();
+                return TRUE;
             }
             else
             {
                 add_feedback('Invalid username or password. Please try again.', 'error');
+                return FALSE;
             } 
         }
         else
         {
             add_feedback('Please provide both your email address and your password.', 'error');
+            return FALSE;
         }
+    }
     
+    public function reset_action_code($user_id)
+    {
+        $this->db->where('user_id', $user_id);
+        $this->db->update('User', array(
+            'action_code'=>generate_hash()
+        ));
         
+        return $this->get($user_id);
+    }
+    
+    public function set_status($user_id, $status_id)
+    {
+        $this->db->where('user_id', $user_id);
+        $this->db->update('User', array('status'=>$status_id));
+        
+        return $this->get($user_id);
     }
     
     public function signup()
@@ -100,12 +133,38 @@ class User_model extends CI_Model {
         $signup_data = array(
             'name' => $this->input->post('name'),
             'email' => $this->input->post('email'),
-            'password' => md5($this->input->post('password'))
+            'password' => md5($this->input->post('password')),
+            'action_code' => generate_hash()
         );
         
         $this->db->insert('User', $signup_data);
         $user_id = $this->db->insert_id();
-        dv($user_id);
+        
+        if ($user_id)
+        {
+            return $this->get($user_id);
+        }
+        else
+        {
+            return FALSE;
+        }
+    }
+    
+    public function verify($user_id, $code)
+    {
+        $user = $this->get($user_id);
+        $this->reset_action_code($user_id);
+        if ($user->action_code == $code)
+        {
+            $user = $this->set_status($user_id, STATUS_OK);
+            $this->session->set_userdata('user', $user);
+            return TRUE;
+        }
+        else
+        {
+            $this->session->set_userdata('user', $user);
+            return FALSE;
+        }
     }
         
 }

@@ -1,7 +1,8 @@
-CREATE OR REPLACE VIEW `user_details` AS 
+CREATE OR REPLACE VIEW `User_Details` AS 
 SELECT  `User`.user_id, 
         `User`.`name`, 
         `User`.email, 
+        `User`.action_code, 
         `Status`.status_id, 
         `Status`.`name` as `status`, 
         `Status`.`order` as `status_order`, 
