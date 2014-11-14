@@ -6063,7 +6063,9 @@ footer p:after,
 #nav-main-content:before,
 #nav-main-content:after,
 .no-bleed #site-content:before,
-.no-bleed #site-content:after {
+.no-bleed #site-content:after,
+#own-sites header:before,
+#own-sites header:after {
   content: " ";
   display: table;
 }
@@ -6089,7 +6091,8 @@ footer p:after,
 #masthead:after,
 #nav-main:after,
 #nav-main-content:after,
-.no-bleed #site-content:after {
+.no-bleed #site-content:after,
+#own-sites header:after {
   clear: both;
 }
 .center-block {
@@ -7378,6 +7381,132 @@ fieldset[disabled] #nav-main .btn-link:focus {
     margin-left: 0;
   }
 }
+#own-sites header {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+#own-sites header h3 {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin-top: 0;
+}
+@media (min-width: 992px) {
+  #own-sites header h3 {
+    float: left;
+    width: 66.66666666666666%;
+  }
+}
+#own-sites header .options {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  #own-sites header .options {
+    float: left;
+    width: 33.33333333333333%;
+  }
+}
+#own-sites header .btn-add {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.618;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: #ffffff;
+  background-color: #10cb79;
+  border-color: #0eb46b;
+  float: right !important;
+}
+#own-sites header .btn-add:focus,
+#own-sites header .btn-add:active:focus,
+#own-sites header .btn-add.active:focus,
+#own-sites header .btn-add.focus,
+#own-sites header .btn-add:active.focus,
+#own-sites header .btn-add.active.focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+#own-sites header .btn-add:hover,
+#own-sites header .btn-add:focus,
+#own-sites header .btn-add.focus {
+  color: #333333;
+  text-decoration: none;
+}
+#own-sites header .btn-add:active,
+#own-sites header .btn-add.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+#own-sites header .btn-add.disabled,
+#own-sites header .btn-add[disabled],
+fieldset[disabled] #own-sites header .btn-add {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+#own-sites header .btn-add:hover,
+#own-sites header .btn-add:focus,
+#own-sites header .btn-add.focus,
+#own-sites header .btn-add:active,
+#own-sites header .btn-add.active,
+.open > .dropdown-toggle#own-sites header .btn-add {
+  color: #ffffff;
+  background-color: #0c9c5d;
+  border-color: #097b49;
+}
+#own-sites header .btn-add:active,
+#own-sites header .btn-add.active,
+.open > .dropdown-toggle#own-sites header .btn-add {
+  background-image: none;
+}
+#own-sites header .btn-add.disabled,
+#own-sites header .btn-add[disabled],
+fieldset[disabled] #own-sites header .btn-add,
+#own-sites header .btn-add.disabled:hover,
+#own-sites header .btn-add[disabled]:hover,
+fieldset[disabled] #own-sites header .btn-add:hover,
+#own-sites header .btn-add.disabled:focus,
+#own-sites header .btn-add[disabled]:focus,
+fieldset[disabled] #own-sites header .btn-add:focus,
+#own-sites header .btn-add.disabled.focus,
+#own-sites header .btn-add[disabled].focus,
+fieldset[disabled] #own-sites header .btn-add.focus,
+#own-sites header .btn-add.disabled:active,
+#own-sites header .btn-add[disabled]:active,
+fieldset[disabled] #own-sites header .btn-add:active,
+#own-sites header .btn-add.disabled.active,
+#own-sites header .btn-add[disabled].active,
+fieldset[disabled] #own-sites header .btn-add.active {
+  background-color: #10cb79;
+  border-color: #0eb46b;
+}
+#own-sites header .btn-add .badge {
+  color: #10cb79;
+  background-color: #ffffff;
+}
 #site-content {
   min-height: 100%;
   padding-bottom: 100px;
@@ -7398,4 +7527,88 @@ fieldset[disabled] #nav-main .btn-link:focus {
 }
 #site-content:after {
   clear: both;
+}
+table {
+  width: 100%;
+  max-width: 100%;
+  margin-bottom: 22px;
+}
+table > thead > tr > th,
+table > tbody > tr > th,
+table > tfoot > tr > th,
+table > thead > tr > td,
+table > tbody > tr > td,
+table > tfoot > tr > td {
+  padding: 8px;
+  line-height: 1.618;
+  vertical-align: top;
+  border-top: 1px solid #dddddd;
+}
+table > thead > tr > th {
+  vertical-align: bottom;
+  border-bottom: 2px solid #dddddd;
+}
+table > caption + thead > tr:first-child > th,
+table > colgroup + thead > tr:first-child > th,
+table > thead:first-child > tr:first-child > th,
+table > caption + thead > tr:first-child > td,
+table > colgroup + thead > tr:first-child > td,
+table > thead:first-child > tr:first-child > td {
+  border-top: 0;
+}
+table > tbody + tbody {
+  border-top: 2px solid #dddddd;
+}
+table .table {
+  background-color: #ffffff;
+}
+table > tbody > tr:nth-child(odd) {
+  background-color: #f9f9f9;
+}
+table > tbody > tr:hover {
+  background-color: #f5f5f5;
+}
+textarea {
+  display: block;
+  width: 100%;
+  height: 36px;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.618;
+  color: #7e8b96;
+  background-color: #ffffff;
+  background-image: none;
+  border: 1px solid #cccccc;
+  border-radius: 4px;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.075);
+  -webkit-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  -o-transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+  transition: border-color ease-in-out .15s, box-shadow ease-in-out .15s;
+}
+textarea:focus {
+  border-color: #66afe9;
+  outline: 0;
+  -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+  box-shadow: inset 0 1px 1px rgba(0,0,0,.075), 0 0 8px rgba(102, 175, 233, 0.6);
+}
+textarea::-moz-placeholder {
+  color: #999999;
+  opacity: 1;
+}
+textarea:-ms-input-placeholder {
+  color: #999999;
+}
+textarea::-webkit-input-placeholder {
+  color: #999999;
+}
+textarea[disabled],
+textarea[readonly],
+fieldset[disabled] textarea {
+  cursor: not-allowed;
+  background-color: #ffffff;
+  opacity: 1;
+}
+textareatextarea {
+  height: auto;
 }

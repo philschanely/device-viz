@@ -41,6 +41,23 @@ $config = array(
         $user_id, $user_password, $user_password2
     ),
     'user-request-reset' => array($user_email),
-    'user-reset' => array($user_id, $user_password, $user_password2)
+    'user-reset' => array($user_id, $user_password, $user_password2),
+    'site/edit' => array(
+        array(
+            'field'=>'name',
+            'label'=>'name',
+            'rules'=>'required|trim'
+        ),
+        array(
+            'field'=>'url',
+            'label'=>'url',
+            'rules'=>'required|trim'
+        ),
+        array(
+            'field'=>'description',
+            'label'=>'description',
+            'rules'=>'trim'
+        )
+    )
 );
 

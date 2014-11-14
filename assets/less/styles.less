@@ -251,9 +251,24 @@ input{
     padding-bottom:@size5+@size4; 
 }
 
+#own-sites {
+    header { 
+        .make-row; 
+        h3 { .make-md-column(8); margin-top:0; }
+        .options { .make-md-column(4); }
+        .btn-add {
+            .btn; .btn-success; .pull-right;
+        }
+    }
+}
+
 #site-content {
     .clearfix;
     min-height:100%; 
     padding-bottom:@size5;
     margin-bottom:-@size5;
 }
+
+table { .table; .table-striped; .table-hover; }
+
+textarea { .form-control; }
