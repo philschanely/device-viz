@@ -21,6 +21,11 @@ class User extends CI_Controller {
         show_view('temporary', $this->dso->all);
     }
     
+    /** TEMPORARY
+     * Delete a user
+     * @param int $user_id
+     * @param string $code
+     
     public function delete($user_id, $code)
     {
         $this->dso->page_title = 'Delete a user';
@@ -30,6 +35,8 @@ class User extends CI_Controller {
             $this->user_model->delete($user_id);
         }
     }
+     * 
+     */
     
     public function disabled()
     {
@@ -115,12 +122,10 @@ class User extends CI_Controller {
         $verified = $this->user_model->verify($user_id, $code);
         if ($verified)
         {
-            add_feedback('Your account has been verified!', 'success');
             redirect(base_url() . URL_DASHBOARD);
         } 
         else
         {
-            add_feedback('Your account cannot be verified at this time. Please request a new verification email.', 'error');
             redirect(base_url() . URL_PENDING);
         }
     }

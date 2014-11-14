@@ -154,14 +154,26 @@ class User_model extends CI_Model {
     {
         $user = $this->get($user_id);
         $this->reset_action_code($user_id);
-        if ($user->action_code == $code)
+        if ($user->status_id == STATUS_OK) 
         {
+            add_feedback('Your account is already verified.', 'success', TRUE);
+            $this->session->set_userdata('user', $user);
+            return TRUE;
+        } 
+        elseif($user->action_code == $code)
+        {
+            add_feedback('Your account has been verified!', 'success', TRUE);
             $user = $this->set_status($user_id, STATUS_OK);
             $this->session->set_userdata('user', $user);
             return TRUE;
         }
         else
         {
+            add_feedback(
+                'Your account cannot be verified at this time. Please request a new verification email.', 
+                'error', 
+                TRUE
+            );
             $this->session->set_userdata('user', $user);
             return FALSE;
         }
