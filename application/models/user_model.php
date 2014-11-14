@@ -1,11 +1,11 @@
 <?php if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 
 /**
- * Access Level Model
+ * User Model
  *
  * Details to come.
  *
- * @package    Thorin
+ * @package    DeviceViz
  * @subpackage Models
  * @author     Phil Schanely <philschanely@cedarville.edu>
  */
