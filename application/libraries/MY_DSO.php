@@ -13,7 +13,7 @@ class MY_DSO extends CI_DSO {
     
     public function load_defaults()
     {
-        $this->page_title = '';
+        $this->page_title = 'Visualize your device data';
         $this->page_id = 'page-default';
         $this->page_class = 'no-bleed ';
         $this->base_url = base_url();
