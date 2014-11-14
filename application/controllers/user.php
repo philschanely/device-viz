@@ -16,7 +16,7 @@ class User extends CI_Controller {
      */
     public function index()
     {
-        $this->user_model->check_for_auth(FALSE);
+        $this->user_model->check_for_auth();
         show_view('temporary', $this->dso->all);
     }
     
@@ -64,6 +64,7 @@ class User extends CI_Controller {
     
     public function pending()
     {
+        $this->user_model->check_for_auth(FALSE);
         show_view('user/pending', $this->dso->all);
     }
     

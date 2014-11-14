@@ -39,11 +39,11 @@ class User_model extends CI_Model {
                     }
                     break;
                 case STATUS_PENDING:
-                    if (uri_string() != URL_PENDING) redirect(base_url() . URL_PENDING);
+                    if (uri_string() != URL_PENDING && $force) redirect(base_url() . URL_PENDING);
                     break;
                 case STATUS_DISABLED:
                 default:
-                    if (uri_string() != URL_DISABLED) redirect(base_url() . URL_DISABLED);
+                    if (uri_string() != URL_DISABLED && $force) redirect(base_url() . URL_DISABLED);
                     break;
             }
         }
@@ -74,7 +74,7 @@ class User_model extends CI_Model {
                 'password'=>md5($password)
             );
             $this->db->where($data);
-            $valid_user = checkForResults($this->db->get('user'), 'row');
+            $valid_user = checkForResults($this->db->get('User'), 'row');
             
             if ($valid_user)
             {
@@ -103,7 +103,7 @@ class User_model extends CI_Model {
             'password' => md5($this->input->post('password'))
         );
         
-        $this->db->insert('user', $signup_data);
+        $this->db->insert('User', $signup_data);
         $user_id = $this->db->insert_id();
         dv($user_id);
     }
