@@ -16,43 +16,6 @@ class User_model extends CI_Model {
         parent::__construct();
     }
     
-    public function login()
-    {
-        $email = $this->input->post('email');
-        $password = $this->input->post('password');
-        
-        if ($email && $password)
-        {
-            $data = array(
-                'email'=>$email,
-                'password'=>md5($password)
-            );
-            $this->db->where($data);
-            $valid_user = checkForResults($this->db->get('user'), 'row');
-            
-            if ($valid_user)
-            {
-                $this->db->where('user_id', $valid_user->user_id);
-                $user = checkForResults($this->db->get('user_details'), 'row');
-                $this->session->set_userdata('user', $user);
-                $this->check_for_auth();
-            }
-            else
-            {
-                add_feedback('Invalid username or password. Please try again.', 'error');
-            } 
-        }
-        else
-        {
-            add_feedback('Please provide both your email address and your password.', 'error');
-        }
-    }
-    
-    public function get()
-    {
-        return TRUE;
-    }
-    
     public function check_for_auth($force=TRUE)
     {
         // If user is in session assign to DSO for access
@@ -90,4 +53,59 @@ class User_model extends CI_Model {
             redirect(base_url() . URL_LOGIN);
         }
     }
+    
+    public function get($user_id)
+    {
+        $this->db->where('user_id', $user_id);
+        $user = checkForResults($this->db->get('user_details'), 'row');
+        return $user;
+    }
+    
+    public function login()
+    {
+        $email = $this->input->post('email');
+        $password = $this->input->post('password');
+        
+        if ($email && $password)
+        {
+            $this->db->select('user_id');
+            $data = array(
+                'email'=>$email,
+                'password'=>md5($password)
+            );
+            $this->db->where($data);
+            $valid_user = checkForResults($this->db->get('user'), 'row');
+            
+            if ($valid_user)
+            {
+                $user = $this->get($valid_user->user_id);
+                $this->session->set_userdata('user', $user);
+                $this->check_for_auth();
+            }
+            else
+            {
+                add_feedback('Invalid username or password. Please try again.', 'error');
+            } 
+        }
+        else
+        {
+            add_feedback('Please provide both your email address and your password.', 'error');
+        }
+    
+        
+    }
+    
+    public function signup()
+    {
+        $signup_data = array(
+            'name' => $this->input->post('name'),
+            'email' => $this->input->post('email'),
+            'password' => md5($this->input->post('password'))
+        );
+        
+        $this->db->insert('user', $signup_data);
+        $user_id = $this->db->insert_id();
+        dv($user_id);
+    }
+        
 }

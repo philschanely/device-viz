@@ -6052,8 +6052,6 @@ button.close {
 #benefits .inner:after,
 #benefits .inner ul:before,
 #benefits .inner ul:after,
-#dashboard .dashboard-intro:before,
-#dashboard .dashboard-intro:after,
 html:not(.no-bleed) #feedback:before,
 html:not(.no-bleed) #feedback:after,
 footer p:before,
@@ -6086,7 +6084,6 @@ footer p:after,
 .modal-footer:after,
 #benefits .inner:after,
 #benefits .inner ul:after,
-#dashboard .dashboard-intro:after,
 html:not(.no-bleed) #feedback:after,
 footer p:after,
 #masthead:after,
@@ -6739,10 +6736,6 @@ fieldset[disabled] #btn-signup a.active {
 #btn-signup a:hover {
   color: #0c9c5d;
 }
-#dashboard .dashboard-intro {
-  margin-left: -15px;
-  margin-right: -15px;
-}
 #feedback .error {
   padding: 15px;
   margin-bottom: 22px;
@@ -6880,6 +6873,33 @@ form > ul {
   list-style: none;
 }
 form > ul > li {
+  margin-bottom: 15px;
+}
+form.form-horizontal label {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  form.form-horizontal label {
+    float: left;
+    width: 16.666666666666664%;
+  }
+}
+form.form-horizontal .controls {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+@media (min-width: 992px) {
+  form.form-horizontal .controls {
+    float: left;
+    width: 50%;
+  }
+}
+form.form-horizontal > ul > li {
   margin-bottom: 15px;
 }
 input[type="submit"] {

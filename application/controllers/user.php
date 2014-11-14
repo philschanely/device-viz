@@ -20,13 +20,18 @@ class User extends CI_Controller {
         show_view('temporary', $this->dso->all);
     }
     
-    public function create()
+    public function signup()
     {
-        if ($this->input->post('submit-createuser'))
+        $this->load->library('form_validation');
+            
+        if ($this->form_validation->run() == FALSE)
         {
-            $this->user_model->create();
+            show_view('user/signup', $this->dso->all);
         }
-        show_view('user/create', $this->dso->all);
+        else
+        {
+           $this->user_model->signup();
+        }
     }
     
     public function disabled()
@@ -37,16 +42,18 @@ class User extends CI_Controller {
     
     public function login()
     {
-        if ($this->input->post('submit-login'))
+        $this->load->library('form_validation');
+        
+        if ($this->form_validation->run() == FALSE)
         {
-            $this->user_model->login();
+            $this->dso->show_login = FALSE;
+            $this->dso->returnto = ($this->input->get('returnto')) ? $this->input->get('returnto') : '';
+            show_view('user/login', $this->dso->all);
         }
         else
         {
-            $this->dso->show_login = FALSE;
+           $this->user_model->login();
         }
-        $this->dso->returnto = ($this->input->get('returnto')) ? $this->input->get('returnto') : '';
-        show_view('user/login', $this->dso->all);
     }
     
     public function logout()

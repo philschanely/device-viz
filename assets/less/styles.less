@@ -154,7 +154,7 @@ body {
 }
 
 #dashboard {
-    .dashboard-intro { .row; }
+    .dashboard-intro {}
 }
 
 #feedback {
@@ -180,6 +180,11 @@ form {
     & > ul {
         .list-unstyled;
         & > li { .form-group; }
+    }
+    &.form-horizontal {
+        label { .make-md-column(2); }
+        .controls { .make-md-column(6); }
+        & > ul > li { .form-group; }
     }
 }
 
