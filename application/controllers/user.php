@@ -70,7 +70,6 @@ class User extends CI_Controller {
     {
         $this->user_model->check_for_auth(FALSE);
         $this->dso->page_title = 'Pending verification';
-        dv($this->dso->all);
         
         show_view('user/pending', $this->dso->all);
     }
@@ -100,6 +99,7 @@ class User extends CI_Controller {
             if ($user)
             {
                 $this->_send_verification_email($user);
+                show_view('user/pending', $this->dso->all);
             }
             else
             {
@@ -147,7 +147,7 @@ class User extends CI_Controller {
         $this->email->message($message);
         $this->email->send();
         
-        echo $this->email->print_debugger();
+        #echo $this->email->print_debugger();
         
         return TRUE;
     }
