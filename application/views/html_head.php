@@ -32,3 +32,10 @@
         </nav>
         
         <div id="site-content">
+            {show_feedback?}
+            <div id="feedback">
+                {show_flashdata?}{flashdata}{/show_flashdata?}
+                {feedback}
+            </div>
+            {/show_feedback?}
+            

@@ -1,19 +1,14 @@
 <h2>Log in</h2>
-
-{show_message?}
-<p class="alert alert-warning">{message}</p>
-{/show_message?}
-
 <form action="{base_url}user/login" method="post">
     <ul>
-        <li class="control-group">
-            <label class="control-label">Email</label>
+        <li>
+            <label>Email</label>
             <div class="controls">
                 <input type="text" name="email" />
             </div>
         </li>
-        <li class="control-group">
-            <label class="control-label">Password</label>
+        <li>
+            <label>Password</label>
             <div class="controls">
                 <input type="password" name="password" />
             </div>

@@ -32,7 +32,6 @@ class User_model extends CI_Model {
             
             if ($valid_user)
             {
-                $this->dso->message .= 'Valid user!';
                 $this->db->where('user_id', $valid_user->user_id);
                 $user = checkForResults($this->db->get('user_details'), 'row');
                 $this->session->set_userdata('user', $user);
@@ -40,12 +39,12 @@ class User_model extends CI_Model {
             }
             else
             {
-                $this->dso->message .= 'Invalid username or password. Please try again.';
+                add_feedback('Invalid username or password. Please try again.', 'error');
             } 
         }
         else
         {
-            $this->dso->message .= 'Please provide both your email address and your password.';
+            add_feedback('Please provide both your email address and your password.', 'error');
         }
     }
     

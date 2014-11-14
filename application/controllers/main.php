@@ -8,6 +8,8 @@ class Main extends CI_Controller {
      */
     public function index()
     {
+        $this->dso->page_class = '';
+        $this->user_model->check_for_auth(FALSE);
         show_view('index', $this->dso->all);
     }
     

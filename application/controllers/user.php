@@ -20,6 +20,15 @@ class User extends CI_Controller {
         show_view('temporary', $this->dso->all);
     }
     
+    public function create()
+    {
+        if ($this->input->post('submit-createuser'))
+        {
+            $this->user_model->create();
+        }
+        show_view('user/create', $this->dso->all);
+    }
+    
     public function disabled()
     {
         $this->user_model->check_for_auth(FALSE);
@@ -35,10 +44,8 @@ class User extends CI_Controller {
         else
         {
             $this->dso->show_login = FALSE;
-            $this->dso->message = 'Please log in.';
         }
         $this->dso->returnto = ($this->input->get('returnto')) ? $this->input->get('returnto') : '';
-        $this->dso->show_message = !$this->dso->is_empty('message') ? TRUE : FALSE;
         show_view('user/login', $this->dso->all);
     }
     
