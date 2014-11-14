@@ -13,9 +13,14 @@ class MY_DSO extends CI_DSO {
     
     public function load_defaults()
     {
-        $this->page_title = 'Default Podio Test Page';
-        $this->page_id = 'page-unknown';
+        $this->page_title = '';
+        $this->page_id = 'page-default';
+        $this->page_class = 'no-bleed ';
         $this->base_url = base_url();
+        $this->user = NULL;
+        $this->auth = FALSE;
+        $this->show_login = TRUE;
+        $this->show_acct_options = FALSE;
     }
 }
 

@@ -4,12 +4,12 @@
 <p class="alert alert-warning">{message}</p>
 {/show_message?}
 
-<form action="{base_url}user/login">
+<form action="{base_url}user/login" method="post">
     <ul>
         <li class="control-group">
-            <label class="control-label">Username</label>
+            <label class="control-label">Email</label>
             <div class="controls">
-                <input type="text" name="username" />
+                <input type="text" name="email" />
             </div>
         </li>
         <li class="control-group">
@@ -19,5 +19,6 @@
             </div>
         </li>
     </ul>
-    <p class="form-actions"><input type="submit" value="Log in" /></p>
+    <input type="hidden" name="returnto" value="{returnto}" />
+    <p class="form-actions"><input name="submit-login" type="submit" value="Log in" /></p>
 </form>

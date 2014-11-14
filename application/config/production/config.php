@@ -14,8 +14,7 @@
 | path to your installation.
 |
 */
-$config['base_url']	= 'http://localhost/';
-#$config['base_url']	= 'http://deviceviz.philschanely.com/';
+$config['base_url']	= 'http://deviceviz.philschanely.com/';
 
 /*
 |--------------------------------------------------------------------------

@@ -15,7 +15,6 @@
 |
 */
 $config['base_url']	= 'http://localhost/';
-#$config['base_url']	= 'http://deviceviz.philschanely.com/';
 
 /*
 |--------------------------------------------------------------------------

@@ -22,7 +22,7 @@ ENGINE = MyISAM;
 CREATE TABLE IF NOT EXISTS `deviceviz`.`Access_Level` (
   `access_level_id` INT(1) NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(32) NOT NULL,
-  `order` VARCHAR(45) NOT NULL,
+  `order` INT(2) NOT NULL,
   PRIMARY KEY (`access_level_id`),
   UNIQUE INDEX `order_UNIQUE` (`order` ASC),
   UNIQUE INDEX `name_UNIQUE` (`name` ASC))
@@ -36,9 +36,9 @@ CREATE TABLE IF NOT EXISTS `deviceviz`.`User` (
   `user_id` INT NOT NULL AUTO_INCREMENT,
   `name` VARCHAR(45) NOT NULL,
   `email` VARCHAR(45) NOT NULL,
-  `password` VARCHAR(45) NOT NULL,
-  `access_level` INT NOT NULL,
-  `status` INT NOT NULL,
+  `password` VARCHAR(32) NOT NULL,
+  `access_level` INT(1) NOT NULL,
+  `status` INT(1) NOT NULL,
   PRIMARY KEY (`user_id`),
   UNIQUE INDEX `email_UNIQUE` (`email` ASC),
   INDEX `Status_idx` (`status` ASC),

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="{page_class}">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,7 +7,7 @@
         <title>Page Name | DeviceViz</title>
 
         <!-- Bootstrap -->
-        <link href="/assets/css/styles.css" rel="stylesheet" />
+        <link href="{base_url}assets/css/styles.css" rel="stylesheet" />
 
         <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
         <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -17,13 +17,17 @@
         <![endif]-->
     </head>
     <body>
-
         <nav id="nav-main">
             <div id="nav-main-content">
                 <div id="masthead">
-                    <h1><a href="/">Device<b>Viz</b> <small>Visualize your device data</small></a></h1>
+                    <h1><a href="{base_url}">Device<b>Viz</b> <small>Visualize your device data</small></a></h1>
                 </div>
-                <a id="btn-login" href="/user/login">Log in</a>
+                {show_login?}
+                <a id="btn-login" href="{base_url}user/login?returnto=main/dashboard">Log in</a>
+                {/show_login?}
+                {show_acct_options?}
+                <a id="btn-logout" href="{base_url}user/logout">Log out</a>
+                {/show_acct_options?}
             </div>
         </nav>
         

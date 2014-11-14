@@ -13,6 +13,17 @@
 //== Fonts
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic|Roboto+Condensed:300italic,400italic,700italic,400,300,700);
 
+@roboto: "Roboto";
+@roboto-condensed: "Roboto Condensed";
+
+//== Sizes
+@size1: 14px;
+@size2: 23px;
+@size3: 37px;
+@size4: 59px;
+@size5: 100px;
+
+
 //== Redefine bootstrap variables
 
 @brand-primary: @blue;
@@ -30,7 +41,7 @@
 @gray-light:   lighten(@gray-base, 46.7%); 
 @gray-lighter: lighten(@gray-base, 93.5%); 
 
-@font-family-sans-serif:  "Roboto", Helvetica, Arial, sans-serif;
+@font-family-sans-serif:  @roboto;
 @font-family-base:        @font-family-sans-serif;
 
 @font-size-base:          14px;
@@ -47,7 +58,7 @@
 @line-height-base:        1.618;
 @line-height-computed:    floor((@font-size-base * @line-height-base));
 
-@headings-font-family:    "Roboto Condensed";
+@headings-font-family:    @roboto-condensed;
 @headings-font-weight:    300;
 @headings-line-height:    1.618;
 @headings-color:          inherit;
@@ -63,6 +74,10 @@
         border-color:@off-white;
     }
 }
+.bbox {
+    box-sizing:border-box;
+    -moz-box-sizing: border-box;
+}
 
 
 //== Style overrides
@@ -70,12 +85,17 @@
 a { color:@green; }
 a:hover { color:@hi-green; }
 
-html { background-color: @off-white; }
+html { 
+    background-color: @off-white;
+    height:100%;
+}
 
 body {
     background-color: @off-white;
     color:@grey;
     font-weight:300;
+    height:100%;
+    .clearfix; 
 }
 
 #benefits {
@@ -83,8 +103,8 @@ body {
     background-color:@dark-blue;
     .inner {
         .container;
-        padding-top:59px;
-        padding-bottom:37px;
+        padding-top:@size4;
+        padding-bottom:@size3;
         h2 { 
             margin-top:0;
             font-size:@font-size-h1;
@@ -95,14 +115,14 @@ body {
         ul { 
             .list-unstyled; 
             .make-row();
-            margin-top:23px;
+            margin-top:@size2;
         }
         li { 
             .make-md-column(4); 
-            font-size:24px;
+            font-size:@size2;
             color:@off-white;
             img { 
-                margin-bottom:23px; 
+                margin-bottom:@size2; 
                 .center-block; 
                 .img-responsive;
             }
@@ -113,20 +133,57 @@ body {
     }
 }
 
-#btn-login {
+#btn-login, 
+#btn-logout {
     .btn; .btn-default; .btn-ghost;
     .navbar-btn;
     .pull-right;
 }
 
+#btn-signup a {
+    .btn;
+    .btn-default;
+    .btn-ghost;
+    .btn-lg;
+    .center-block;
+    width:230px;
+    font-size:@size3;
+    font-weight: 300;
+    margin-top:60px;
+    &:hover { color:@green; }
+}
+
+#dashboard {
+    .dashboard-intro { .row; }
+}
+
 footer {
     background: @gray-base;
     color:@off-white;
+    height:@size5; 
     p {
         .container;
-        padding:53px 15px;
+        padding:@size2 @size1;
         margin-bottom:0;
         text-align:center;
+    }
+}
+
+form {
+    & > ul {
+        .list-unstyled;
+        & > li { .form-group; }
+    }
+}
+
+input{
+    &[type="submit"] {
+        .btn;
+        .btn-success;
+    }
+    &[type="text"],
+    &[type="password"]{
+        .form-control;
     }
 }
 
@@ -154,9 +211,10 @@ footer {
 #masthead {
     .navbar-header; 
     h1 { 
+        .navbar-brand;  
         margin-top:0; 
-        margin-bottom:0; 
-        .navbar-brand; 
+        margin-bottom:0;
+        padding-left:0; 
         a { color:@off-white; }
         small { color:@off-white; font-size:@font-size-base; }
     }
@@ -173,15 +231,13 @@ footer {
     .container;
 }
 
-#btn-signup a {
-    .btn;
-    .btn-default;
-    .btn-ghost;
-    .btn-lg;
-    .center-block;
-    width:230px;
-    font-size:37px;
-    font-weight: 300;
-    margin-top:60px;
-    &:hover { color:@green; }
+.no-bleed #site-content {
+    .container;
+    padding-bottom:@size5+@size4; 
+}
+
+#site-content {
+    height:100%;
+    padding-bottom:@size5;
+    margin-bottom:-@size5;
 }
