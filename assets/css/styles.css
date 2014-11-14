@@ -6462,7 +6462,8 @@ body:after {
   padding-top: 35px;
 }
 #btn-login,
-#btn-logout {
+#btn-logout,
+#btn-account {
   display: inline-block;
   margin-bottom: 0;
   font-weight: normal;
@@ -6490,36 +6491,48 @@ body:after {
   margin-top: 7px;
   margin-bottom: 7px;
   float: right !important;
+  margin-left: 14px;
 }
 #btn-login:focus,
 #btn-logout:focus,
+#btn-account:focus,
 #btn-login:active:focus,
 #btn-logout:active:focus,
+#btn-account:active:focus,
 #btn-login.active:focus,
 #btn-logout.active:focus,
+#btn-account.active:focus,
 #btn-login.focus,
 #btn-logout.focus,
+#btn-account.focus,
 #btn-login:active.focus,
 #btn-logout:active.focus,
+#btn-account:active.focus,
 #btn-login.active.focus,
-#btn-logout.active.focus {
+#btn-logout.active.focus,
+#btn-account.active.focus {
   outline: thin dotted;
   outline: 5px auto -webkit-focus-ring-color;
   outline-offset: -2px;
 }
 #btn-login:hover,
 #btn-logout:hover,
+#btn-account:hover,
 #btn-login:focus,
 #btn-logout:focus,
+#btn-account:focus,
 #btn-login.focus,
-#btn-logout.focus {
+#btn-logout.focus,
+#btn-account.focus {
   color: #333333;
   text-decoration: none;
 }
 #btn-login:active,
 #btn-logout:active,
+#btn-account:active,
 #btn-login.active,
-#btn-logout.active {
+#btn-logout.active,
+#btn-account.active {
   outline: 0;
   background-image: none;
   -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
@@ -6527,10 +6540,13 @@ body:after {
 }
 #btn-login.disabled,
 #btn-logout.disabled,
+#btn-account.disabled,
 #btn-login[disabled],
 #btn-logout[disabled],
+#btn-account[disabled],
 fieldset[disabled] #btn-login,
-fieldset[disabled] #btn-logout {
+fieldset[disabled] #btn-logout,
+fieldset[disabled] #btn-account {
   cursor: not-allowed;
   pointer-events: none;
   opacity: 0.65;
@@ -6540,83 +6556,114 @@ fieldset[disabled] #btn-logout {
 }
 #btn-login:hover,
 #btn-logout:hover,
+#btn-account:hover,
 #btn-login:focus,
 #btn-logout:focus,
+#btn-account:focus,
 #btn-login.focus,
 #btn-logout.focus,
+#btn-account.focus,
 #btn-login:active,
 #btn-logout:active,
+#btn-account:active,
 #btn-login.active,
 #btn-logout.active,
+#btn-account.active,
 .open > .dropdown-toggle#btn-login,
-.open > .dropdown-toggle#btn-logout {
+.open > .dropdown-toggle#btn-logout,
+.open > .dropdown-toggle#btn-account {
   color: #333333;
   background-color: #e6e6e6;
   border-color: #adadad;
 }
 #btn-login:active,
 #btn-logout:active,
+#btn-account:active,
 #btn-login.active,
 #btn-logout.active,
+#btn-account.active,
 .open > .dropdown-toggle#btn-login,
-.open > .dropdown-toggle#btn-logout {
+.open > .dropdown-toggle#btn-logout,
+.open > .dropdown-toggle#btn-account {
   background-image: none;
 }
 #btn-login.disabled,
 #btn-logout.disabled,
+#btn-account.disabled,
 #btn-login[disabled],
 #btn-logout[disabled],
+#btn-account[disabled],
 fieldset[disabled] #btn-login,
 fieldset[disabled] #btn-logout,
+fieldset[disabled] #btn-account,
 #btn-login.disabled:hover,
 #btn-logout.disabled:hover,
+#btn-account.disabled:hover,
 #btn-login[disabled]:hover,
 #btn-logout[disabled]:hover,
+#btn-account[disabled]:hover,
 fieldset[disabled] #btn-login:hover,
 fieldset[disabled] #btn-logout:hover,
+fieldset[disabled] #btn-account:hover,
 #btn-login.disabled:focus,
 #btn-logout.disabled:focus,
+#btn-account.disabled:focus,
 #btn-login[disabled]:focus,
 #btn-logout[disabled]:focus,
+#btn-account[disabled]:focus,
 fieldset[disabled] #btn-login:focus,
 fieldset[disabled] #btn-logout:focus,
+fieldset[disabled] #btn-account:focus,
 #btn-login.disabled.focus,
 #btn-logout.disabled.focus,
+#btn-account.disabled.focus,
 #btn-login[disabled].focus,
 #btn-logout[disabled].focus,
+#btn-account[disabled].focus,
 fieldset[disabled] #btn-login.focus,
 fieldset[disabled] #btn-logout.focus,
+fieldset[disabled] #btn-account.focus,
 #btn-login.disabled:active,
 #btn-logout.disabled:active,
+#btn-account.disabled:active,
 #btn-login[disabled]:active,
 #btn-logout[disabled]:active,
+#btn-account[disabled]:active,
 fieldset[disabled] #btn-login:active,
 fieldset[disabled] #btn-logout:active,
+fieldset[disabled] #btn-account:active,
 #btn-login.disabled.active,
 #btn-logout.disabled.active,
+#btn-account.disabled.active,
 #btn-login[disabled].active,
 #btn-logout[disabled].active,
+#btn-account[disabled].active,
 fieldset[disabled] #btn-login.active,
-fieldset[disabled] #btn-logout.active {
+fieldset[disabled] #btn-logout.active,
+fieldset[disabled] #btn-account.active {
   background-color: #ffffff;
   border-color: #cccccc;
 }
 #btn-login .badge,
-#btn-logout .badge {
+#btn-logout .badge,
+#btn-account .badge {
   color: #ffffff;
   background-color: #333333;
 }
 #btn-login:hover,
-#btn-logout:hover {
+#btn-logout:hover,
+#btn-account:hover {
   border-color: #f2f2f2;
 }
 #btn-login.btn-sm,
-#btn-logout.btn-sm {
+#btn-logout.btn-sm,
+#btn-account.btn-sm {
   margin-top: 11px;
   margin-bottom: 11px;
 }
 #btn-login.btn-xs,
-#btn-logout.btn-xs {
+#btn-logout.btn-xs,
+#btn-account.btn-xs {
   margin-top: 14px;
   margin-bottom: 14px;
 }
@@ -6901,6 +6948,11 @@ form.form-horizontal .controls {
 }
 form.form-horizontal > ul > li {
   margin-bottom: 15px;
+}
+@media (min-width: 992px) {
+  form.form-horizontal .form-end .controls {
+    margin-left: 16.666666666666664%;
+  }
 }
 input[type="submit"] {
   display: inline-block;

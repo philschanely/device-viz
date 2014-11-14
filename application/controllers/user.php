@@ -16,16 +16,30 @@ class User extends CI_Controller {
      */
     public function index()
     {
+        $this->load->library('form_validation');
         $this->user_model->check_for_auth();
-        $this->dso->page_title = 'User Information';
-        show_view('temporary', $this->dso->all);
+        
+        $this->dso->page_title = 'Account Information';
+        
+        if ($this->input->post('submit-change-info') 
+                && $this->form_validation->run('user-change-info')
+        )
+        {
+            $this->user_model->change_info($this->dso->user->user_id);
+        }
+        elseif ($this->input->post('submit-change-password') 
+                && $this->form_validation->run('user-change-password')
+        )
+        {
+            $this->user_model->change_password($this->dso->user->user_id);
+        }
+        show_view('user/account', $this->dso->all);
     }
     
     /** TEMPORARY
      * Delete a user
      * @param int $user_id
      * @param string $code
-     
     public function delete($user_id, $code)
     {
         $this->dso->page_title = 'Delete a user';
@@ -41,6 +55,7 @@ class User extends CI_Controller {
     public function disabled()
     {
         $this->user_model->check_for_auth(FALSE);
+        
         $this->dso->page_title = 'User disabled';
         show_view('user/disabled', $this->dso->all);
     }
@@ -48,10 +63,13 @@ class User extends CI_Controller {
     public function login()
     {
         $this->load->library('form_validation');
+        
         $this->dso->page_title = 'Log in';
         $this->dso->show_login = FALSE;
-        $this->dso->returnto = ($this->input->get('returnto')) ? $this->input->get('returnto') : '';
-               
+        $this->dso->returnto = ($this->input->get('returnto')) 
+            ? $this->input->get('returnto') 
+            : '';
+              
         if ($this->form_validation->run() == FALSE)
         {
             show_view('user/login', $this->dso->all);
@@ -61,7 +79,7 @@ class User extends CI_Controller {
            $logged_in = $this->user_model->login();
            if (!$logged_in)
            {
-               show_view('user/login', $this->dso->all);
+                show_view('user/login', $this->dso->all);
            }
         }
     }
@@ -88,6 +106,50 @@ class User extends CI_Controller {
         $this->_send_verification_email($user);
         
         show_view('user/resend_verification', $this->dso->all);
+    }
+    
+    public function password($action, $user_id=-1, $code='')
+    {
+        $this->load->library('form_validation');
+                
+        $this->dso->page_title = 'Reset a forgotten password';
+        switch ($action)
+        {
+            case 'request_reset':
+                if ($this->form_validation->run('user-request-reset') == FALSE)
+                {
+                    show_view('user/password/request_reset', $this->dso->all);
+                }
+                elseif ($user = $this->user_model->validate_email())
+                {
+                    add_feedback('Your reset verification email is on its way.', 'success', TRUE);
+                    $this->_send_reset_verification_email($user);
+                    redirect(base_url() . URL_LOGIN);
+                }
+                else
+                {
+                    add_feedback("We don't have an account for that email address.", 'error');
+                    show_view('user/password/request_reset', $this->dso->all);
+                }
+                
+                break;
+            case 'reset':
+                if ($this->form_validation->run('user-reset') == FALSE)
+                {
+                    $this->dso->user_id = $user_id;
+                    $this->dso->action_code = $code;
+                    show_view('user/password/reset', $this->dso->all);
+                }
+                elseif ($user = $this->user_model->reset_password())
+                {
+                    redirect(base_url() . URL_DASHBOARD);
+                }
+                else
+                {
+                    redirect(base_url() . URL_LOGIN);
+                }
+                break;
+        }
     }
     
     public function signup()
@@ -149,6 +211,33 @@ class User extends CI_Controller {
         $this->email->from('service@philschanely.com', 'DeviceViz Administrator');
         $this->email->to($user->email);
         $this->email->subject('DeviceViz Account Verification');
+        $this->email->message($message);
+        $this->email->send();
+        
+        #echo $this->email->print_debugger();
+        
+        return TRUE;
+    }
+    
+    private function _send_reset_verification_email($user)
+    {
+        $this->dso->user = $user;
+        $this->dso->code = $user->action_code;
+
+        $view_stack = array();
+        $view_stack[] = 'email/head';
+        $view_stack[] = 'email/verify_reset';
+        $view_stack[] = 'email/foot';
+
+        $message = show_view($view_stack, $this->dso->all, FALSE, FALSE, TRUE);
+
+        $this->load->library('email');
+
+        $config['mailtype'] = 'html';
+        $this->email->initialize($config);
+        $this->email->from('service@philschanely.com', 'DeviceViz Administrator');
+        $this->email->to($user->email);
+        $this->email->subject('DeviceViz Password Reset');
         $this->email->message($message);
         $this->email->send();
         

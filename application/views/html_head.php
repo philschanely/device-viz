@@ -27,6 +27,7 @@
                 {/show_login?}
                 {show_acct_options?}
                 <a id="btn-logout" href="{base_url}user/logout">Log out</a>
+                <a id="btn-account" href="{base_url}user/index">My Account</a>
                 {/show_acct_options?}
             </div>
         </nav>

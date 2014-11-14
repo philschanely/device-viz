@@ -1,2 +1,4 @@
 <h2>Dashboard</h2>
-<p>Loading your info...</p>
+<ul>
+    <li>Sites...</li>
+</ul>

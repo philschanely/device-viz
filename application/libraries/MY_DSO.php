@@ -21,6 +21,7 @@ class MY_DSO extends CI_DSO {
         $this->auth = FALSE;
         $this->show_login = TRUE;
         $this->show_acct_options = FALSE;
+        $this->feedback = '';
     }
 }
 

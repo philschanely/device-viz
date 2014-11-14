@@ -134,10 +134,12 @@ body {
 }
 
 #btn-login, 
-#btn-logout {
+#btn-logout, 
+#btn-account {
     .btn; .btn-default; .btn-ghost;
     .navbar-btn;
     .pull-right;
+    margin-left:@size1;
 }
 
 #btn-signup a {
@@ -185,6 +187,7 @@ form {
         label { .make-md-column(2); }
         .controls { .make-md-column(6); }
         & > ul > li { .form-group; }
+        & .form-end .controls { .make-md-column-offset(2); }
     }
 }
 
