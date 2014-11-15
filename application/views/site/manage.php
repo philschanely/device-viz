@@ -20,7 +20,7 @@
             <td>{end_date}</td>
             <td>
                 <a href="{base_url}period/edit/{period_id}">Edit</a> | 
-                <a href="{base_url}period/manage/{period_id}">Manage data</a> | 
+                <a href="{base_url}data/index/{period_id}">Manage data</a> | 
                 Delete
             </td>
         </tr>

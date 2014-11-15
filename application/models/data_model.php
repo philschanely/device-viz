@@ -16,7 +16,14 @@ class Data_model extends CI_Model {
         parent::__construct();
         $this->load->model('period_model');
     }
-    /*
+    
+    public function clear($period_id)
+    {
+        $this->db->where('period', $period_id);
+        $this->db->delete('Data_Point');
+        return TRUE;
+    }
+    
     public function check_permission($period_id, $user_id)
     {
         $period = $this->period_model->get($period_id);
@@ -31,7 +38,7 @@ class Data_model extends CI_Model {
     }
     
     public function prepare_set($filter='', $sortby='') {}
-    */
+    
     public function get($data_id=0, $period_id=0)
     {
         $data = array();
@@ -86,27 +93,30 @@ class Data_model extends CI_Model {
         return $data;
     }
     
-    public function save()
+    public function save($data_id=-1, $form_data=array(), $show_feedback=TRUE)
     {
-        $data_id = (int) $this->input->post('data_point_id');
-        $period_id = (int) $this->input->post('period_id');
-        $user_id = $this->input->post('user_id');
-        
-        $width = (int) $this->input->post('width');
-        $height = (int) $this->input->post('height');
-        $url = $this->input->post('url');
-        $sessions = (int) $this->input->post('sessions');
-        $avg_duration = (float) $this->input->post('avg_duration');
-        $avg_pages = (float) $this->input->post('avg_pages');
-        
-        $form_data = array(
-            'width' => $width,
-            'height' => $height,
-            'url' => $url,
-            'sessions' => $sessions,
-            'avg_duration' => $avg_duration,
-            'avg_pages' => $avg_pages
-        );
+        if ($data_id===-1)
+        {
+            $data_id = (int) $this->input->post('data_point_id');
+            $period_id = (int) $this->input->post('period_id');
+            $user_id = $this->input->post('user_id');
+
+            $width = (int) $this->input->post('width');
+            $height = (int) $this->input->post('height');
+            $url = $this->input->post('url');
+            $sessions = (int) $this->input->post('sessions');
+            $avg_duration = (float) $this->input->post('avg_duration');
+            $avg_pages = (float) $this->input->post('avg_pages');
+
+            $form_data = array(
+                'width' => $width,
+                'height' => $height,
+                'url' => $url,
+                'sessions' => $sessions,
+                'avg_duration' => $avg_duration,
+                'avg_pages' => $avg_pages
+            );
+        }
         
         if ($data_id > 0)
         {
@@ -115,22 +125,25 @@ class Data_model extends CI_Model {
             {
                 $this->db->where('data_point_id', $data_id);
                 $this->db->update('Data_Point', $form_data);
-                add_feedback('Saved changes to the device data.', 'success', TRUE);
+                if ($show_feedback) add_feedback('Saved changes to the device data.', 'success', TRUE);
                 $data = $this->get($data_id);
             }
             else
             {
-                add_feedback('You are not allowed to edit this device data.', 'error', TRUE);
+                if ($show_feedback) add_feedback('You are not allowed to edit this device data.', 'error', TRUE);
                 $data = FALSE;
             }
         }
         else
         {
-            $form_data['period'] = $period_id;
+            if (!array_key_exists('period', $form_data)) 
+            {
+                $form_data['period'] = $period_id;
+            }
             $this->db->insert('Data_Point', $form_data);
             $data_id = $this->db->insert_id();
             $data = $this->get($data_id);
-            add_feedback('Device data was created successfully.', 'success', TRUE);
+            if ($show_feedback) add_feedback('Device data was created successfully.', 'success', TRUE);
         }
         
         return $data;
