@@ -113,5 +113,40 @@ $config = array(
             'rules'=>'required'
         )
     ),
+    'data/edit' => array(
+        array(
+            'field'=>'width',
+            'label'=>'site',
+            'rules'=>'required|integer'
+        ),
+        array(
+            'field'=>'height',
+            'label'=>'site',
+            'rules'=>'required|integer'
+        ),
+        array(
+            'field'=>'url',
+            'label'=>'site',
+            'rules'=>'trim'
+        ),
+        array(
+            'field'=>'sessions',
+            'label'=>'site',
+            'rules'=>'required|integer'
+        ),
+        array(
+            'field'=>'avg_duration',
+            'label'=>'site',
+            'rules'=>'required|trim'
+        ),
+        array(
+            'field'=>'avg_pages',
+            'label'=>'site',
+            'rules'=>'required|numeric'
+        ),
+        array(
+        )
+    ),
+    'data/import' => array()
 );
 
