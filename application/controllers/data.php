@@ -97,7 +97,7 @@ class Data extends CI_Controller {
                         }
                     }
                 }
-                delete_files($path_to_file);
+                unlink($path_to_file);
                 if ($insert_count>0)
                 {
                     add_feedback($insert_count . ' sets of device data were imported.', 'success', TRUE);

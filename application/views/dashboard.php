@@ -3,7 +3,7 @@
     <header>
         <h3>Site Profiles</h3>
         <div class="options">
-            <a class="btn-add" href="{base_url}site/add">&plus; Add a site</a>
+            <a class="btn-add" href="{base_url}site/edit">&plus; Add a site</a>
         </div>
     </header>
     {sites_found?}
