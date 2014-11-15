@@ -4,12 +4,12 @@
 $user_id = array(
     'field' => 'user_id',
     'label' => 'identification number',
-    'rules' => 'required'
+    'rules' => 'required|integer'
 );
 $user_email = array(
     'field' => 'email',
     'label' => 'e-mail',
-    'rules' => 'required'
+    'rules' => 'required|valid_email'
 );
 $user_name = array(
     'field' => 'name',
@@ -51,13 +51,67 @@ $config = array(
         array(
             'field'=>'url',
             'label'=>'url',
-            'rules'=>'required|trim'
+            'rules'=>'required|trim|prep_url'
         ),
         array(
             'field'=>'description',
             'label'=>'description',
-            'rules'=>'trim'
+            'rules'=>'trim|xss_clean'
         )
-    )
+    ),
+    'group/edit' => array(
+        array(
+            'field'=>'site',
+            'label'=>'site',
+            'rules'=>'required|integer'
+        ),
+        array(
+            'field'=>'name',
+            'label'=>'name',
+            'rules'=>'required|trim'
+        ),
+        array(
+            'field'=>'icon',
+            'label'=>'icon',
+            'rules'=>'required|integer'
+        ),
+        array(
+            'field'=>'min_width',
+            'label'=>'minimum width',
+            'rules'=>'required|integer'
+        ),
+        array(
+            'field'=>'max_width',
+            'label'=>'maximum width',
+            'rules'=>'required|integer'
+        ),
+        array(
+            'field'=>'order',
+            'label'=>'order',
+            'rules'=>'required|integer'
+        ),
+        array(
+            'field'=>'allow_portrait',
+            'label'=>'include portrait orientations',
+            'rules'=>'required|integer'
+        )
+    ),
+    'period/edit' => array(
+        array(
+            'field'=>'site',
+            'label'=>'site',
+            'rules'=>'required|integer'
+        ),
+        array(
+            'field'=>'start_date',
+            'label'=>'start date',
+            'rules'=>'required'
+        ),
+        array(
+            'field'=>'end_date',
+            'label'=>'end date',
+            'rules'=>'required'
+        )
+    ),
 );
 

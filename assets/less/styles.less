@@ -197,7 +197,9 @@ input{
         .btn-success;
     }
     &[type="text"],
-    &[type="password"]{
+    &[type="password"], 
+    &[type="date"], 
+    &[type="number"]{
         .form-control;
     }
 }
@@ -251,7 +253,7 @@ input{
     padding-bottom:@size5+@size4; 
 }
 
-#own-sites {
+.entity {
     header { 
         .make-row; 
         h3 { .make-md-column(8); margin-top:0; }

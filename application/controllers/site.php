@@ -42,7 +42,19 @@ class Site extends CI_Controller {
     
     public function manage($site_id)
     {
-        $this->dso->page_title = 'Site Data Visualization';
+        $this->load->model(array('group_model','period_model'));
+        
+        $site = $this->site_model->get($site_id);
+        $this->dso->site = $site;
+        
+        $this->dso->page_title = 'Managing ' . $site->name;
+        
+        $periods = $this->period_model->get_for_site($site_id);
+        prep_view_results($periods, 'periods');
+        
+        $groups = $this->group_model->get_for_site($site_id);
+        prep_view_results($groups, 'groups');
+        
         show_view('site/manage', $this->dso->all);
     }
 }

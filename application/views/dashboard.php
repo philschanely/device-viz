@@ -1,5 +1,5 @@
 <h2>Dashboard</h2>
-<section id="own-sites">
+<section id="own-sites" class="entity">
     <header>
         <h3>Site Profiles</h3>
         <div class="options">
