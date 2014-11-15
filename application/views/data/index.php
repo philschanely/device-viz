@@ -2,7 +2,7 @@
 <div class="entity">
     <h3>{period.start_date} - {period.end_date}</h3>
     <a class="btn-add" href="{base_url}data/edit/0/{period.period_id}">&plus; Add</a>
-    <a class="btn-add" href="{base_url}data/import/{period.period_id">&uarr; Import</a>
+    <a class="btn-add" href="{base_url}data/import/{period.period_id}">&uarr; Import</a>
 </div>
 {device_data_found?}
 <table>

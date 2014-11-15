@@ -39,6 +39,47 @@ class Data extends CI_Controller {
             redirect(base_url() . 'data/index/' . $data->period);
         }
     }
+    
+    public function import($period_id)
+    {
+        $this->load->library('form_validation');
+        $period = $this->period_model->get($period_id);
+        $this->dso->period = $period;
+        
+        if (!$this->input->post('submit-data-import'))
+        {
+            $this->dso->page_title = 'Import Device Data';
+            show_view('data/import', $this->dso->all);
+        }
+        else
+        {
+            $config['upload_path'] = './uploads/';
+            $config['allowed_types'] = 'csv';
+            $config['max_size']	= '10000';
+
+            $this->load->library('upload', $config);
+
+            if ( ! $this->upload->do_upload('csvfile'))
+            {
+                $feedback = $this->upload->display_errors();
+                $data = $this->upload->data();
+                add_feedback($feedback, 'error', TRUE);
+                dv($feedback);
+                dv($data);
+                #redirect(base_url() . 'data/index/' . $period_id);
+            }
+            else
+            {
+                $data = $this->upload->data();
+                dv($data);
+                
+                $this->load->helper('file');
+                $file = read_file($config['upload_path'] . $data['file_name']);
+                dv($file);
+                #redirect(base_url() . 'data/index/' . $period_id);
+            }
+        }
+    }
 }
 
 /* End of file welcome.php */

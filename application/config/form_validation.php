@@ -143,10 +143,14 @@ $config = array(
             'field'=>'avg_pages',
             'label'=>'site',
             'rules'=>'required|numeric'
-        ),
-        array(
         )
     ),
-    'data/import' => array()
+    'data/import' => array(
+        array(
+            'field'=>'csvfile',
+            'label'=>'file',
+            'rules'=>'required'
+        )
+    )
 );
 
