@@ -22,7 +22,7 @@
             <td>{start_date}</td>
             <td>{end_date}</td>
             <td>
-                <a href="{base_url}period/edit/{period_id}">Edit</a> | 
+                <a href="{base_url}period/edit/{period_id}/{site.site_id}">Edit</a> | 
                 <a href="{base_url}data/index/{period_id}">Manage data</a> | 
                 Delete
             </td>
@@ -67,7 +67,7 @@
             <td>{min_width}</td>
             <td>{max_width}</td>
             <td>{allow_portrait}</td>
-            <td><a href="{base_url}group/edit/{group_id}">Edit</a> | Delete </td>
+            <td><a href="{base_url}group/edit/{group_id}/{site.site_id}">Edit</a> | Delete </td>
         </tr>
         {/groups}
     </table>

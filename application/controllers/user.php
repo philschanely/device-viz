@@ -18,6 +18,8 @@ class User extends CI_Controller {
     {
         $this->load->library('form_validation');
         $this->user_model->check_for_auth();
+        $this->dso->show_breadcrumbs = TRUE;
+        $this->dso->add_to('breadcrumbs', base_url('user/index'), 'Manager account');
         
         $this->dso->page_title = 'Account Information';
         

@@ -7,6 +7,7 @@ class Data extends CI_Controller {
         parent::__construct();
         $this->user_model->check_for_auth();
         $this->load->model(array('data_model','period_model'));
+        $this->dso->show_breadcrumbs = TRUE;
     }
     
     public function index($period_id)
@@ -15,6 +16,9 @@ class Data extends CI_Controller {
         $this->dso->period = $period;
         $data = $this->data_model->get_for_period($period_id);
         prep_view_results($data, 'device_data');
+        
+        $this->dso->add_to('breadcrumbs', base_url('site/manage/' . $period->site), 'Manage site');
+        $this->dso->add_to('breadcrumbs', base_url('data/index/' . $period_id), 'Manage data');
         
         show_view('data/index', $this->dso->all);
     }
@@ -31,6 +35,13 @@ class Data extends CI_Controller {
                 $period_id
             );
             $this->dso->device_data = $data;
+            
+            $period = $this->period_model->get($period_id);
+        
+            $this->dso->add_to('breadcrumbs', base_url('site/manage/' . $period->site), 'Manage site');
+            $this->dso->add_to('breadcrumbs', base_url('data/index/' . $period_id), 'Manage data');
+            $this->dso->add_to('breadcrumbs', base_url('data/edit/' . $data_point_id), 'Edit data');
+
             show_view('data/edit', $this->dso->all);
         }
         else
@@ -45,6 +56,9 @@ class Data extends CI_Controller {
         $this->load->library('form_validation');
         $period = $this->period_model->get($period_id);
         $this->dso->period = $period;
+        $this->dso->add_to('breadcrumbs', base_url('site/manage/' . $period->site), 'Manage site');
+        $this->dso->add_to('breadcrumbs', base_url('data/index/' . $period_id), 'Manage data');
+        $this->dso->add_to('breadcrumbs', base_url('data/import/' . $period_id), 'Import data');
         
         if (!$this->input->post('submit-data-import'))
         {
@@ -116,6 +130,10 @@ class Data extends CI_Controller {
     {
         $period = $this->period_model->get($period_id);
         $this->dso->period = $period;
+        $this->dso->add_to('breadcrumbs', base_url('site/manage/' . $period->site), 'Manage site');
+        $this->dso->add_to('breadcrumbs', base_url('data/index/' . $period_id), 'Manage data');
+        $this->dso->add_to('breadcrumbs', base_url('data/clear/' . $period_id), 'Clear data');
+        
         if ($confirmed)
         {
             $this->data_model->clear($period_id);

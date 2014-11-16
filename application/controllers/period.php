@@ -7,6 +7,7 @@ class Period extends CI_Controller {
         parent::__construct();
         $this->load->model('period_model');
         $this->user_model->check_for_auth();
+        $this->dso->show_breadcrumbs = TRUE;
     }
     
     public function edit($period_id=0, $site_id=0)
@@ -22,6 +23,10 @@ class Period extends CI_Controller {
                 $this->dso->user->user_id
             );
             $this->dso->period = $period;
+            
+            $this->dso->add_to('breadcrumbs', base_url('site/manage/' . $site_id), 'Manage site');
+            $this->dso->add_to('breadcrumbs', base_url('period/edit/' . $period_id), 'Edit data period');
+
             show_view('period/edit', $this->dso->all);
         }
         else

@@ -40,3 +40,5 @@
             </div>
             {/show_feedback?}
             
+            {show_breadcrumbs?}{breadcrumbs}{/show_breadcrumbs?}
+            

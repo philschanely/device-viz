@@ -22,6 +22,21 @@ class MY_DSO extends CI_DSO {
         $this->show_login = TRUE;
         $this->show_acct_options = FALSE;
         $this->feedback = '';
+        $this->show_breadcrumbs = FALSE;
+    }
+    
+    public function process_for_display()
+    {
+        if (!$this->is_empty('breadcrumbs') || $this->show_breadcrumbs)
+        {
+            if ($this->is_empty('breadcrumbs')) 
+            {
+                $this->breadcrumbs = array();
+            }
+            
+            $crumbs = breadcrumbs($this->breadcrumbs, base_url('main/dashboard'));
+            $this->breadcrumbs = $crumbs;
+        }
     }
 }
 
