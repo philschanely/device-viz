@@ -7525,6 +7525,19 @@ fieldset[disabled] .entity header .btn-add.active {
   color: #10cb79;
   background-color: #ffffff;
 }
+.entity header .intro {
+  position: relative;
+  min-height: 1px;
+  padding-left: 15px;
+  padding-right: 15px;
+  clear: both;
+}
+@media (min-width: 992px) {
+  .entity header .intro {
+    float: left;
+    width: 100%;
+  }
+}
 #site-content {
   min-height: 100%;
   padding-bottom: 100px;

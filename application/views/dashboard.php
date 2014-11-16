@@ -5,6 +5,9 @@
         <div class="options">
             <a class="btn-add" href="{base_url}site/edit">&plus; Add a site</a>
         </div>
+        <div class="intro">
+            <p>Site Profiles allow you to track data for a specific site. Add one to get started!</p>
+        </div>
     </header>
     {sites_found?}
     <table>

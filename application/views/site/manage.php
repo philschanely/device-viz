@@ -6,6 +6,9 @@
         <div class="options">
             <a class="btn-add" href="{base_url}period/edit/0/{site.site_id}">&plus; Add Data Period</a>
         </div>
+        <div class="intro">
+            <p>Data periods allow you to enter data inside a specific date range. Add at least one in order to add or import data to visualize.</p>
+        </div>
     </header>
     {periods_found?}
     <table>
@@ -39,6 +42,15 @@
         <div class="options">
             <a class="btn-add" href="{base_url}group/edit/0/{site.site_id}">&plus; Add Device Group</a>
         </div>
+        <div class="intro">
+            <p>Device groups help you visualize the devices accessing your site. Add as many as you like but consider the following:</p>
+            <ul class="list-unstyled">
+                <li>Smartphone: 100px to 767px including portrait orientation</li>
+                <li>Tablet: 768px to 1199px including portrait orientation</li>
+                <li>Laptop: 1200px to 1599px excluding portrait orientation</li>
+                <li>Desktop: 1600px to 5000px including portrait orientation</li>
+            </ul>
+        </div>
     </header>
     {groups_found?}
     <table>
@@ -55,7 +67,7 @@
             <td>{min_width}</td>
             <td>{max_width}</td>
             <td>{allow_portrait}</td>
-            <td><a href="{base_url}group/edit/{group_id}">Edit</a> | Move up | Move down | Delete </td>
+            <td><a href="{base_url}group/edit/{group_id}">Edit</a> | Delete </td>
         </tr>
         {/groups}
     </table>
