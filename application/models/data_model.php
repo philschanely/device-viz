@@ -98,13 +98,13 @@ class Data_model extends CI_Model {
         return $data;
     }
     
-    public function get_for_site($site_id, $aggregate=FALSE)
+    public function get_for_site($site_id, $aggregate=FALSE, $orderby='sessions DESC')
     {
         if ($aggregate)
         {
             $query = "SELECT width, height, site, period, device, global_device,
                     SUM(sessions) as sessions 
-                    FROM Data_Info WHERE site = {$site_id} GROUP BY device ORDER BY sessions DESC";
+                    FROM Data_Info WHERE site = {$site_id} GROUP BY device ORDER BY {$orderby}";
             $data = checkForResults($this->db->query($query));
         } 
         else 
@@ -222,8 +222,13 @@ class Data_model extends CI_Model {
                     'url' => $show_url ? $data_point->url : '',
                     'show_url' => $show_url,
                     'width_percent' => round($data_point->width / $totals->max_width * 100, 4),
+                    'half_width_percent' => round($data_point->width / $totals->max_width * 100, 4)/2,
                     'height_percent' => round($data_point->height / $totals->max_height * 100, 4),
-                    'session_raw_percentage' => round(MAX_ONION_OPACITY * $data_point->sessions / $totals->max_sessions, 7)
+                    'opacity_percentage' => 
+                        round(
+                            MAX_ONION_OPACITY * $data_point->sessions / $totals->max_sessions, 
+                            7
+                        ) + MIN_ONION_OPACITY
                 );
             }
         }

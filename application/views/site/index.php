@@ -5,9 +5,9 @@
 <ul class="device-onionskin list-unstyled" style="width:{onion_width}px; height:{onion_height}px;">
 {devices1}
     <li class="device" 
-        style="width:{width_percent}%; height:{height_percent}%; left:-{half_width_percent}%; opacity:{session_raw_percentage}">
+        style="width:{width_percent}%; height:{height_percent}%; margin-left:-{half_width_percent}%; opacity:{opacity_percentage}">
         <p class="device-info">
-            <span>{width}&times;{height}</span>
+            <span class="device-size">{width}&times;{height}</span>
             <span class="session-count">{sessions}</span>
             <span class="sessions-label">sessions</span> 
             {show_percentage?}
@@ -25,9 +25,9 @@
 <ul class="device-lineup list-unstyled list-inline">
 {devices2}
     <li class="device">
-        <div class="device-icon">{device}</div>
+        <div class="device-icon" style="opacity:{opacity_percentage}">{device}</div>
         <p class="device-info">
-            <span>{width}&times;{height}</span>
+            <span class="device-size">{width}&times;{height}</span>
             <span class="session-count">{sessions}</span>
             <span class="sessions-label">sessions</span> 
             {show_percentage?}

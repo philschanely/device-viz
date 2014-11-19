@@ -25,17 +25,22 @@ class Site extends CI_Controller {
         
         $site = $this->site_model->get($site_id);
         
-        $set = $this->data_model->get_for_site($site_id, TRUE);
         $totals = $this->data_model->get_total_sessions('site', $site_id);
-        $devices = $this->data_model->render_set($set, $totals);
-        $this->dso->devices1 = $devices; 
-        $this->dso->devices2 = $devices; 
         $this->dso->onion_width = $totals->max_width > LAYOUT_WIDTH 
                 ? LAYOUT_WIDTH
                 : $totals->max_width;
         $this->dso->onion_height = $totals->max_width > LAYOUT_WIDTH 
                 ? LAYOUT_WIDTH / $totals->max_width * $totals->max_height
                 : $totals->max_height;
+        
+        $set1 = $this->data_model->get_for_site($site_id, TRUE, 'width DESC');
+        $devices1 = $this->data_model->render_set($set1, $totals);
+        $this->dso->devices1 = $devices1; 
+        
+        $set2 = $this->data_model->get_for_site($site_id, TRUE);
+        $devices2 = $this->data_model->render_set($set2, $totals);
+        $this->dso->devices2 = $devices2; 
+        
         
         $this->dso->site = $site;
         

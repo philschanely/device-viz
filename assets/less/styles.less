@@ -159,6 +159,64 @@ body {
     .dashboard-intro {}
 }
 
+.device-onionskin {
+    position: relative; .bbox;
+    border:10px solid @dark-blue; border-radius: 10px;
+    background-color:@green; 
+    .device { 
+        position: absolute; top:0; left:50%; 
+        border:1px solid @off-white; 
+        text-align:center;
+        transition:0.5s ease-out 0;
+        transition-property: opacity;
+        p { 
+            opacity:0; position:relative; 
+            bottom:-30px; margin-top:20px; 
+            transition:0.3s ease-out 0;
+            transition-property: opacity, bottom;
+            color:@off-white; font-size:@size2;
+            font-family: @roboto-condensed;
+            span { 
+                display: block; 
+                &.session-count,
+                &.sessions-label { display: none; }
+                &.sessions-percentage { font-weight:400; font-size:@size3; }
+            }
+        }
+        &:hover { 
+            opacity:1!important; background-color: @blue; 
+            p { opacity: 1; bottom:0; }
+        }
+    }
+}
+
+.device-lineup {
+    .device {
+        text-align: center; color:@dark-blue;
+        transition:0.3s ease 0;
+        transition-property:color;
+        &:hover { color:@green; }
+        span {
+            &.device-size { font-size:@size2; display: block; }
+            &.sessions-percentage {
+                &:before { content:"("; }
+                &:after { content:")"; }
+            }
+        }
+        .device-icon {
+            transition:opacity 0.3s ease 0;
+        }
+        path { 
+            fill: @dark-blue; 
+            transition:fill 0.3s ease 0;
+        }
+        &:hover {
+            path { fill:@green; }
+            .device-icon { opacity:1!important; }
+        }
+    }
+}
+
 #feedback {
     .error { .alert; .alert-danger; }
     .warning { .alert; .alert-warning; }
