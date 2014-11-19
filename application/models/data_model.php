@@ -97,7 +97,7 @@ class Data_model extends CI_Model {
     {
         if ($data_id===-1)
         {
-            $data_id = (int) $this->input->post('data_point_id');
+            $data_id = (int) $this->input->post('data_id');
             $period_id = (int) $this->input->post('period_id');
             $user_id = $this->input->post('user_id');
 
