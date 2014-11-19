@@ -6670,6 +6670,198 @@ fieldset[disabled] #btn-account.active {
   margin-top: 14px;
   margin-bottom: 14px;
 }
+.btn-cancel {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.618;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: #333333;
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+.btn-cancel:focus,
+.btn-cancel:active:focus,
+.btn-cancel.active:focus,
+.btn-cancel.focus,
+.btn-cancel:active.focus,
+.btn-cancel.active.focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.btn-cancel:hover,
+.btn-cancel:focus,
+.btn-cancel.focus {
+  color: #333333;
+  text-decoration: none;
+}
+.btn-cancel:active,
+.btn-cancel.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+.btn-cancel.disabled,
+.btn-cancel[disabled],
+fieldset[disabled] .btn-cancel {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.btn-cancel:hover,
+.btn-cancel:focus,
+.btn-cancel.focus,
+.btn-cancel:active,
+.btn-cancel.active,
+.open > .dropdown-toggle.btn-cancel {
+  color: #333333;
+  background-color: #e6e6e6;
+  border-color: #adadad;
+}
+.btn-cancel:active,
+.btn-cancel.active,
+.open > .dropdown-toggle.btn-cancel {
+  background-image: none;
+}
+.btn-cancel.disabled,
+.btn-cancel[disabled],
+fieldset[disabled] .btn-cancel,
+.btn-cancel.disabled:hover,
+.btn-cancel[disabled]:hover,
+fieldset[disabled] .btn-cancel:hover,
+.btn-cancel.disabled:focus,
+.btn-cancel[disabled]:focus,
+fieldset[disabled] .btn-cancel:focus,
+.btn-cancel.disabled.focus,
+.btn-cancel[disabled].focus,
+fieldset[disabled] .btn-cancel.focus,
+.btn-cancel.disabled:active,
+.btn-cancel[disabled]:active,
+fieldset[disabled] .btn-cancel:active,
+.btn-cancel.disabled.active,
+.btn-cancel[disabled].active,
+fieldset[disabled] .btn-cancel.active {
+  background-color: #ffffff;
+  border-color: #cccccc;
+}
+.btn-cancel .badge {
+  color: #ffffff;
+  background-color: #333333;
+}
+.btn-confirm {
+  display: inline-block;
+  margin-bottom: 0;
+  font-weight: normal;
+  text-align: center;
+  vertical-align: middle;
+  touch-action: manipulation;
+  cursor: pointer;
+  background-image: none;
+  border: 1px solid transparent;
+  white-space: nowrap;
+  padding: 6px 12px;
+  font-size: 14px;
+  line-height: 1.618;
+  border-radius: 4px;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  color: #ffffff;
+  background-color: #10cb79;
+  border-color: #0eb46b;
+}
+.btn-confirm:focus,
+.btn-confirm:active:focus,
+.btn-confirm.active:focus,
+.btn-confirm.focus,
+.btn-confirm:active.focus,
+.btn-confirm.active.focus {
+  outline: thin dotted;
+  outline: 5px auto -webkit-focus-ring-color;
+  outline-offset: -2px;
+}
+.btn-confirm:hover,
+.btn-confirm:focus,
+.btn-confirm.focus {
+  color: #333333;
+  text-decoration: none;
+}
+.btn-confirm:active,
+.btn-confirm.active {
+  outline: 0;
+  background-image: none;
+  -webkit-box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+  box-shadow: inset 0 3px 5px rgba(0, 0, 0, 0.125);
+}
+.btn-confirm.disabled,
+.btn-confirm[disabled],
+fieldset[disabled] .btn-confirm {
+  cursor: not-allowed;
+  pointer-events: none;
+  opacity: 0.65;
+  filter: alpha(opacity=65);
+  -webkit-box-shadow: none;
+  box-shadow: none;
+}
+.btn-confirm:hover,
+.btn-confirm:focus,
+.btn-confirm.focus,
+.btn-confirm:active,
+.btn-confirm.active,
+.open > .dropdown-toggle.btn-confirm {
+  color: #ffffff;
+  background-color: #0c9c5d;
+  border-color: #097b49;
+}
+.btn-confirm:active,
+.btn-confirm.active,
+.open > .dropdown-toggle.btn-confirm {
+  background-image: none;
+}
+.btn-confirm.disabled,
+.btn-confirm[disabled],
+fieldset[disabled] .btn-confirm,
+.btn-confirm.disabled:hover,
+.btn-confirm[disabled]:hover,
+fieldset[disabled] .btn-confirm:hover,
+.btn-confirm.disabled:focus,
+.btn-confirm[disabled]:focus,
+fieldset[disabled] .btn-confirm:focus,
+.btn-confirm.disabled.focus,
+.btn-confirm[disabled].focus,
+fieldset[disabled] .btn-confirm.focus,
+.btn-confirm.disabled:active,
+.btn-confirm[disabled]:active,
+fieldset[disabled] .btn-confirm:active,
+.btn-confirm.disabled.active,
+.btn-confirm[disabled].active,
+fieldset[disabled] .btn-confirm.active {
+  background-color: #10cb79;
+  border-color: #0eb46b;
+}
+.btn-confirm .badge {
+  color: #10cb79;
+  background-color: #ffffff;
+}
 #btn-signup a {
   display: inline-block;
   margin-bottom: 0;

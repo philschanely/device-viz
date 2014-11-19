@@ -16,11 +16,12 @@
             <span class="help-block"><?php echo form_error('csvfile'); ?></span>
         </p>
     </div>
-    <input type="hidden" name="period_id" value="{device_data.period}" />
+    <input type="hidden" name="period_id" value="{period.period_id}" />
     <input type="hidden" name="user_id" value="{user.user_id}" />
     <div class="form-group form-end">
         <p class="controls">
             <input type="submit" name="submit-data-import" value="Save" />
+            <a class="btn-cancel" href="{base_url}data/index/{period.period_id}">Cancel</a>
         </p>
     </div>
 </form>

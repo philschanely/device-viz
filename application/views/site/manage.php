@@ -22,9 +22,11 @@
             <td>{start_date}</td>
             <td>{end_date}</td>
             <td>
-                <a href="{base_url}period/edit/{period_id}/{site.site_id}">Edit</a> | 
-                <a href="{base_url}data/index/{period_id}">Manage data</a> | 
-                Delete
+                <div class="btn-group">
+                    <a class="btn btn-default" href="{base_url}period/edit/{period_id}/{site.site_id}">Edit</a>
+                    <a class="btn btn-default" href="{base_url}data/index/{period_id}">Manage data</a>
+                    <a class="btn btn-danger disabled" href="#">Delete</a>
+                </div>
             </td>
         </tr>
         {/periods}
@@ -67,7 +69,12 @@
             <td>{min_width}</td>
             <td>{max_width}</td>
             <td>{allow_portrait}</td>
-            <td><a href="{base_url}group/edit/{group_id}/{site.site_id}">Edit</a> | Delete </td>
+            <td>
+                <div class="btn-group">
+                    <a class="btn btn-default" href="{base_url}group/edit/{group_id}/{site.site_id}">Edit</a>
+                    <a class="btn btn-danger disabled" href="#">Delete</a>
+                </div>
+            </td>
         </tr>
         {/groups}
     </table>

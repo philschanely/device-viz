@@ -51,6 +51,7 @@
     <div class="form-group form-end">
         <p class="controls">
             <input type="submit" name="submit-data-edit" value="Save" />
+            <a class="btn-cancel" href="{base_url}data/index/{device_data.period}">Cancel</a>
         </p>
     </div>
 </form>
