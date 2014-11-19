@@ -133,9 +133,12 @@ class Data_model extends CI_Model {
                 $this->db->where('site', $key);
                 break;
         }
-        $this->db->select("SUM(sessions) as total_sessions");
+        $this->db->select("SUM(sessions) as total_sessions, "
+                . "MAX(width) as max_width, "
+                . "MAX(height) as max_height, "
+                . "MAX(sessions) as max_sessions ");
         $result = checkForResults($this->db->get('Data_Info'), 'row');
-        return $result ? $result->total_sessions : FALSE;
+        return $result;
     }
     
     public function render($data, $data_id=0)
@@ -194,12 +197,13 @@ class Data_model extends CI_Model {
         return $device_view;
     }
     
-    public function render_set($set, $total_sessions=0)
+    public function render_set($set, $totals=NULL)
     {
         $sets = array();
-        $show_percentage = $total_sessions > 0;
-        if (!empty($set))
+        if (!empty($set) && !empty($totals))
         {
+            $show_percentage = $totals->total_sessions > 0;
+        
             foreach ($set as $data_point)
             {
                 $show_url = isset($data_point->url);
@@ -208,16 +212,32 @@ class Data_model extends CI_Model {
                     'width' => $data_point->width,
                     'height' => $data_point->height,
                     'sessions' => $data_point->sessions,
+                    'raw_percentage' => $show_percentage 
+                        ? $data_point->sessions/$totals->total_sessions
+                        : NULL,
                     'percentage' => $show_percentage 
-                        ? round($data_point->sessions/$total_sessions * 100, 1)
+                        ? round($data_point->sessions/$totals->total_sessions * 100, 1)
                         : NULL,
                     'show_percentage' => $show_percentage,
                     'url' => $show_url ? $data_point->url : '',
-                    'show_url' => $show_url
+                    'show_url' => $show_url,
+                    'width_percent' => round($data_point->width / $totals->max_width * 100, 4),
+                    'height_percent' => round($data_point->height / $totals->max_height * 100, 4),
+                    'session_raw_percentage' => round($data_point->sessions / $totals->max_sessions * 100, 4)
                 );
             }
         }
         return $sets;
+    }
+    
+    public function prepare_onionskin($set, $max_width, $max_height, $max_sessions)
+    {
+        foreach ($set as $set)
+        {
+            $set['width_percentage'] = $set['width'] / $max_width;
+            $set['height_percentage'] = $set['height'] / $max_height;
+            $set['session_raw_percentage'] = $set['sessions'] / $max_sessions;
+        }
     }
     
     public function save($data_id=-1, $form_data=array(), $show_feedback=TRUE)

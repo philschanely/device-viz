@@ -51,6 +51,8 @@ define('DEVICE_ICON_TABLET', 2);
 define('DEVICE_ICON_LAPTOP', 3); 
 define('DEVICE_ICON_DESKTOP', 4);
 
+define('LAYOUT_WIDTH', 1200);
+
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */
