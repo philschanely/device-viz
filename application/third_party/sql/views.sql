@@ -29,7 +29,7 @@ SELECT * FROM User_Details;
 -- Create the Data_Info View
 
 CREATE OR REPLACE VIEW `Data_Info` AS
-SELECT width, height, url, avg_pages, avg_duration, CONCAT(width,'x',height) AS device,
+SELECT data_point_id, width, height, url, avg_pages, avg_duration, CONCAT(width,'x',height) AS device,
     IF(width>height,CONCAT(width,'x',height),CONCAT(height,'x',width)) AS global_device, 
     IF(width<height,1,0) AS is_portrait, 
     sessions, 
@@ -55,7 +55,7 @@ BEGIN
  
     SELECT SUM(sessions) INTO total_sessions FROM Data_Info WHERE site = site_id ;
 
-    SELECT di.site, di.period, di.device, 
+    SELECT di.width, di.height, di.site, di.period, di.device, di.global_device,
         SUM(di.sessions) as sessions, 
         total_sessions as `total_sessions` 
         FROM Data_Info as di WHERE di.site = site_id GROUP BY di.device;
@@ -65,7 +65,6 @@ DELIMITER ;
 -- Test the aggregate_sessions_by_site Procedure
 
 CALL aggregate_sessions_by_site(2);
-
 
 
 -- -----------------------------------------------------------------------------

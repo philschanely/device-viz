@@ -45,11 +45,11 @@ class Data_model extends CI_Model {
         if ($data_id > 0)
         {
             $this->db->where('data_point_id', $data_id);
-            $data = checkForResults($this->db->get('Data_Point'), 'row');
+            $data = checkForResults($this->db->get('Data_Info'), 'row');
         }
         else
         {
-            $fields = $this->db->list_fields('Data_Point');
+            $fields = $this->db->list_fields('Data_Info');
             foreach ($fields as $field)
             {
                 switch ($field)
@@ -81,16 +81,143 @@ class Data_model extends CI_Model {
         return (object) $data;
     }
     
-    public function get_for_period($period_id)
+    public function get_for_period($period_id, $aggregate=FALSE)
     {
-        $this->db->where('period', $period_id);
-        return $this->get_set();
+        if ($aggregate)
+        {
+            $query = "SELECT width, height, site, period, device, global_device,
+                    SUM(sessions) as sessions 
+                    FROM Data_Info WHERE period = {$period_id}";
+            $data = checkForResults($this->db->query($query));
+        } 
+        else 
+        {
+            $this->db->where('period', $period_id);
+            $data = $this->get_set();
+        }
+        return $data;
+    }
+    
+    public function get_for_site($site_id, $aggregate=FALSE)
+    {
+        if ($aggregate)
+        {
+            $query = "SELECT width, height, site, period, device, global_device,
+                    SUM(sessions) as sessions 
+                    FROM Data_Info WHERE site = {$site_id} GROUP BY device ORDER BY sessions DESC";
+            $data = checkForResults($this->db->query($query));
+        } 
+        else 
+        {
+            $this->db->where('site', $site_id);
+            $data = $this->get_set();
+        }
+        return $data;
     }
     
     public function get_set()
     {
-        $data = checkForResults($this->db->get('Data_Point'), 'result');
+        $data = checkForResults($this->db->get('Data_Info'), 'result');
         return $data;
+    }
+    
+    public function get_total_sessions($filter_key='site', $key)
+    {
+        switch ($filter_key)
+        {
+            case 'period':
+                $this->db->where('period', $key);
+                break;
+            case 'site':
+            default:
+                $this->db->where('site', $key);
+                break;
+        }
+        $this->db->select("SUM(sessions) as total_sessions");
+        $result = checkForResults($this->db->get('Data_Info'), 'row');
+        return $result ? $result->total_sessions : FALSE;
+    }
+    
+    public function render($data, $data_id=0)
+    {
+        $device_view = '';
+        
+        if (empty($data))
+        {
+            if ($data_id > 1)
+            {
+                ep('Trying to load data manually');
+                $data = $this->get($data_id);
+            }
+            else
+            {
+                add_feedback('A data set could not be retrieved.', 'error');
+                return NULL;
+            }
+        }
+        
+        // Load the device group
+        $this->load->model('group_model');
+        $device_group = $this->group_model->get_for_data($data->width, $data->site);
+        
+        if ($device_group)
+        {
+            $this->load->library('device');
+
+            switch ($device_group->icon)
+            {
+                case DEVICE_ICON_SMARTPHONE:
+                case DEVICE_ICON_TABLET:
+                    $this->load->library('device_mobile');
+                    $this->device_mobile->configure($data->width, $data->height);
+                    $device_view = $this->device_mobile->display();
+                    break;
+                case DEVICE_ICON_LAPTOP:
+                    $this->load->library('device_laptop');
+                    $this->device_laptop->configure($data->width, $data->height);
+                    $device_view = $this->device_laptop->display();
+                    break;
+                case DEVICE_ICON_DESKTOP:
+                default:
+                    $this->load->library('device_desktop');
+                    $this->device_desktop->configure($data->width, $data->height);
+                    $device_view = $this->device_desktop->display();
+                    break;
+            }
+        }
+        else
+        {
+            add_feedback('A device could not be found for this data set. Device: ' . $data->device, 'error');
+            return NULL;
+        }
+        
+        return $device_view;
+    }
+    
+    public function render_set($set, $total_sessions=0)
+    {
+        $sets = array();
+        $show_percentage = $total_sessions > 0;
+        if (!empty($set))
+        {
+            foreach ($set as $data_point)
+            {
+                $show_url = isset($data_point->url);
+                $sets[] = array(
+                    'device' => $this->render($data_point),
+                    'width' => $data_point->width,
+                    'height' => $data_point->height,
+                    'sessions' => $data_point->sessions,
+                    'percentage' => $show_percentage 
+                        ? round($data_point->sessions/$total_sessions * 100, 1)
+                        : NULL,
+                    'show_percentage' => $show_percentage,
+                    'url' => $show_url ? $data_point->url : '',
+                    'show_url' => $show_url
+                );
+            }
+        }
+        return $sets;
     }
     
     public function save($data_id=-1, $form_data=array(), $show_feedback=TRUE)

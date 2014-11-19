@@ -46,6 +46,11 @@ define('STATUS_OK', 1);
 define('STATUS_PENDING', 2);
 define('STATUS_DISABLED', 3);
 
+define('DEVICE_ICON_SMARTPHONE', 1);
+define('DEVICE_ICON_TABLET', 2); 
+define('DEVICE_ICON_LAPTOP', 3); 
+define('DEVICE_ICON_DESKTOP', 4);
+
 
 /* End of file constants.php */
 /* Location: ./application/config/constants.php */

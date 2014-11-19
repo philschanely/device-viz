@@ -15,10 +15,20 @@ class Site extends CI_Controller {
      */
     public function index($site_id)
     {
-        $this->dso->add_to('breadcrumbs', base_url() . 'site/index/' . $site_id, 'Visualize site');
+        $this->load->model('data_model');
+        
+        $this->dso->add_to(
+            'breadcrumbs', 
+            base_url() . 'site/index/' . $site_id, 'Visualize site'
+        );
         $this->dso->page_title = 'Site Data Visualization';
         
         $site = $this->site_model->get($site_id);
+        
+        $set = $this->data_model->get_for_site($site_id, TRUE);
+        $total_sessions = $this->data_model->get_total_sessions('site', $site_id);
+        $devices = $this->data_model->render_set($set, $total_sessions);
+        $this->dso->devices = $devices; 
         
         $this->dso->site = $site;
         show_view('site/index', $this->dso->all);

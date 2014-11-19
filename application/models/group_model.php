@@ -61,6 +61,16 @@ class Group_model extends CI_Model {
         return (object) $group;
     }
     
+    public function get_for_data($data_width, $site_id)
+    {
+        $this->db->select('icon');
+        $this->db->where("min_width <= {$data_width}");
+        $this->db->where("max_width >= {$data_width}");
+        $this->db->where("site = {$site_id}");
+        $result = checkForResults($this->db->get('Device_Group'), 'row');
+        return $result;
+    }
+    
     public function get_for_site($site_id)
     {
         $this->db->where('site', $site_id);

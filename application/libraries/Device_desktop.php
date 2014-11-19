@@ -13,7 +13,7 @@ class Device_desktop extends Device {
         $base_top_width = $this->width_dif * 4;
         $stand_slope_width = $this->width_dif * 2;
         $stand_start_x = $this->half_width - $base_half_width + $base_top_width + $stand_slope_width;
-        $stand_height = $this->height_dif * 2;
+        $stand_height = $this->height_dif * 4;
         $stand_slope_height = $this->arc_radius * 2;
         
         $total_height_w_base = $this->total_height + ($stand_height * 2) + $stand_slope_height;

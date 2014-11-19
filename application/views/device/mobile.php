@@ -4,7 +4,7 @@
      xml:space="preserve" 
     width="{scale-total-width}" height="{scale-total-height}"
      viewBox="{viewbox}">
-    <path fill="#00000" 
+    <path fill="#00000" transform="rotate({rotate})" 
         d="M {start-point} 
            m {width-dif},0
            h {width}
