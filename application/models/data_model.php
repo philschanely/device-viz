@@ -223,7 +223,7 @@ class Data_model extends CI_Model {
                     'show_url' => $show_url,
                     'width_percent' => round($data_point->width / $totals->max_width * 100, 4),
                     'height_percent' => round($data_point->height / $totals->max_height * 100, 4),
-                    'session_raw_percentage' => round($data_point->sessions / $totals->max_sessions * 100, 4)
+                    'session_raw_percentage' => round(MAX_ONION_OPACITY * $data_point->sessions / $totals->max_sessions, 7)
                 );
             }
         }

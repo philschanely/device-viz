@@ -5,8 +5,8 @@
 <ul class="device-onionskin list-unstyled" style="width:{onion_width}px; height:{onion_height}px;">
 {devices1}
     <li class="device" 
-        style="width:{width_percent}%; height:{height_percent}%; left:-{half_width_percent}%">
-        <!-- <p class="device-info">
+        style="width:{width_percent}%; height:{height_percent}%; left:-{half_width_percent}%; opacity:{session_raw_percentage}">
+        <p class="device-info">
             <span>{width}&times;{height}</span>
             <span class="session-count">{sessions}</span>
             <span class="sessions-label">sessions</span> 
@@ -16,7 +16,7 @@
             {show_url?}
             <span class="sessions-url">{site.url}{url}</span>
             {/show_url?}
-        </p> -->
+        </p>
     </li>
 {/devices1}
 </ul>
